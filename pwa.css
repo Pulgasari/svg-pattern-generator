@@ -65,5 +65,5 @@ textarea  { padding: var(--gap); }
 
   #Patterns { --gap: 10px; padding: var(--gap) 0; }
   #Preview  { justify-content: center; align-items: center; }
-  #Code     { max-width: 70%; }
+  #Code     { width: 80%; }
 }
