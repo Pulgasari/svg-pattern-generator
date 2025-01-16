@@ -28,13 +28,13 @@ const patterns = [
 function Pattern({ name, url, source }){
   return (<div 
             className='.Pattern'
-            style={
+            style={{
               height: '100px',
               width: '100px',
               backgroundColor: '#DFDBE5',
               backgroundImage: `url("${url}")`
-            }
-          ></div>
+            }}
+          ></div>);
 }
 
 function Options(){
