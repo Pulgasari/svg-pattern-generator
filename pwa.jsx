@@ -96,10 +96,8 @@ const patternCodeAtom   = atom( get => {
   let url = pattern.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
-  let bgImage = '';
   
-  const code = `background-color: ${bgColor}; background-image: url("${url}");`;
-  return code;
+  return `background-color: ${bgColor}; background-image: url("${url}");`;
 });
 const patternObjectAtom = atom( get => 
   PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
@@ -110,17 +108,17 @@ const patternStyleAtom  = atom( get => {
   const fgOpacity = get(fgOpacityAtom);
   const pattern   = get(patternObjectAtom);
 
+  if( !pattern ){ return {}; }
+
   let url = pattern.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
   
-  const style = {
+  return {
     backgroundColor: bgColor,
     backgroundImage: bgImage,
   };
-  
-  return style;
 });
 
 /////////////// REACT ///////////////
