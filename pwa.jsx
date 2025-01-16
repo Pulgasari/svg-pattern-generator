@@ -178,30 +178,12 @@ function Patterns(){
           </div>)
 }
 function Preview(){
-  const bgColor     = useAtomValue( bgColorAtom   );
-  const fgColor     = useAtomValue( fgColorAtom   );
-  const fgOpacity   = useAtomValue( fgOpacityAtom );
-  const patternName = useAtomValue( patternNameAtom );
-  
-  if( patternName ){
-    const pattern = PATTERNS.find( pattern => pattern.name === patternName );
-  
-    let url = pattern.url
-            . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
-            . replace( '$FGOPACITY', fgOpacity );
-    let bgImage = 'url("' + url + '")';
-  
-    <div 
-      id='Preview'
-      style={{
-        backgroundColor: bgColor,
-        backgroundImage: bgImage,
-      }}
-   ></div>
+  const style = useAtomValue( patternStyleAtom );
+  if( style ){
+    <div id='Preview'style={style}></div>
   } else {
     <div id='Preview'>No Pattern was selected.</div>
   }
-  
 }
 
 /////////////// RENDER REACT ///////////////
