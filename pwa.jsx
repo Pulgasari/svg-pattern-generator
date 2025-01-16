@@ -586,6 +586,24 @@ const patternStyleAtom  = atom( get => {
     backgroundImage: bgImage,
   };
 });
+const patternStyleAtom2  = atom( get => {
+  const bgColor   = get(bgColorAtom);
+  const fgColor   = get(fgColorAtom);
+  const fgOpacity = get(fgOpacityAtom);
+  const pattern   = get(patternObjectAtom);
+
+  if( !pattern ){ return {}; }
+
+  let url = obj.url
+          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
+          . replace('#','%23')
+  let bgImage = 'url("' + url + '")';
+
+  return {
+    backgroundColor: bgColor,
+    backgroundImage: bgImage,
+  };
+});
 
 function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
@@ -676,8 +694,8 @@ function Pattern2({ obj }){
   console.log( '<Pattern2> triggered');
 
   let url = obj.url
-          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
-          . replace( '$FGOPACITY', fgOpacity );
+          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
+          . replace('#','%23')
   let bgImage = 'url("' + url + '")';
   //console.log(bgImage);
 
@@ -691,12 +709,12 @@ function Pattern2({ obj }){
           ></div>);
 }
 function Patterns2(){
-  let newPatterns = useAtomValue(patternsObjectAtom);
-  console.log( 'newPatterns in <Patterns2>', newPatterns );
+  //let newPatterns = useAtomValue(patternsObjectAtom);
+  //console.log( 'newPatterns in <Patterns2>', newPatterns );
   return (<div id='Patterns2' data-viewmode='grid'>
-            {newPatterns.map( pattern => {
-              console.log( '<Pattern2> triggered in <Patterns2>');
-              console.log( '--- its obj property:', pattern );
+            {PATTERNS2.map( pattern => {
+              // console.log( '<Pattern2> triggered in <Patterns2>');
+              // console.log( '--- its obj property:', pattern );
               return <Pattern2 key={pattern.name} obj={pattern} />
             })}
           </div>)
@@ -711,10 +729,20 @@ function Preview(){
     return <div id='Preview'>No Pattern was selected.</div>
   }
 }
+function Preview2(){
+  const style = useAtomValue( patternStyleAtom2 );
+  if( style ){
+    return (<div id='Preview' style={style}>
+              <Code/>
+            </div>)
+  } else {
+    return <div id='Preview'>No Pattern was selected.</div>
+  }
+}
 
 /////////////// RENDER REACT ///////////////
 
-var r = <><Options/><Patterns/><Patterns2/><Preview/></>;
+var r = <><Options/><Patterns2/><Preview2/></>;
 ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
 /////////////// ... ///////////////
