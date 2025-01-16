@@ -662,6 +662,7 @@ function Pattern({ obj }){
 }
 function Patterns(){
   console.log( 'PATTERNS in <Patterns>', PATTERNS );
+  console.log( 'PATTERNS2 in <Patterns>', PATTERNS2 );
   return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS2.map( pattern => <Pattern key={pattern.name} obj={pattern} /> )}
           </div>)
