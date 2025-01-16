@@ -122,10 +122,11 @@ function Pattern({ obj }){
   const fgOpacity = useAtomValue( foregroundOpacityAtom );
   
   let url = obj.url
-          . replace(   '$FGCOLOR', fgColor   ) // # -> %23
+          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
   console.log(bgImage);
+  
   return (<div 
             className='Pattern'
             style={{
