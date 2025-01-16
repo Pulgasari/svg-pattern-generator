@@ -579,7 +579,7 @@ function Code(){
 
   if( code ){
   return (<div id='Code'>
-            <textarea value={code} />
+            <textarea value={code} onInput={() => {this.style.height = ''; this.style.height = this.scrollHeight + 'px' }} />
           </div>)
   } else {
     return <div id='Code'>No pattern was selected.</div>
