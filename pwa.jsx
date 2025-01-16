@@ -148,7 +148,7 @@ const patternsObjectAtom = atom( async (get) => {
     // console.log('---------------------------------');
     let p = {
       name: filename,
-       svg: svgString,
+    //   svg: svgString,
        url: svgStringEncoded
     };
     arrayObject.push(p);
