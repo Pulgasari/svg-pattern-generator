@@ -25,13 +25,7 @@ textarea { background: #101010; color: #DDD; }
 
 html { min-height: 100%; height: 100%; --gap: 10px; }
 body { min-height: 100%; height: 100%; }
-#App { min-height: 100%; }
-
-#App      { display: flex; flex-direction: column; align-items: center; justify-content: center; }
-#Options  { order: 1; flex-basis: 100px; flex-grow: 0; width: 100%; }
-#Patterns { order: 2; flex-basis: 100px; flex-grow: 0; width: 100%; }
-#Preview  { order: 3; flex-basis: 100px; flex-grow: 1; width: 100%; }
-#Code     { order: 4; flex-basis: 100px; flex-grow: 0; width: 100%; }
+#App { min-height: 100%; height: 100%; }
 
 #Patterns[data-viewmode*="grid"] {
   display: grid;
@@ -40,16 +34,35 @@ body { min-height: 100%; height: 100%; }
   overflow-y: auto;
   flex-basis: 20%; max-height: 30%;
 }
-#Patterns[data-viewmode="grid"]     { --minmax:  60px; }
+#Patterns[data-viewmode="grid"]     { --minmax:  50px; }
 #Patterns[data-viewmode="grid-100"] { --minmax: 100px; }
 #Patterns[data-viewmode="grid-150"] { --minmax: 150px; }
 #Patterns[data-viewmode="grid-200"] { --minmax: 200px; }
 #Patterns[data-viewmode="grid-300"] { --minmax: 300px; }
 #Patterns > * { aspect-ratio: 1; cursor: pointer; }
 
-#Preview { display: flex; flex-direction: column; justify-content: flex-end; }
-
+#App      { display: flex; }
+#Preview  { display: flex; flex-direction: column; }
 #Code     { display: flex; align-items: stretch; gap: var(--gap); padding: var(--gap); }
 #Code > * { flex-grow: 1; }
+textarea  { padding: var(--gap); }
 
-textarea { padding: var(--gap); }
+@media only screen and (min-width: 0px) {
+  #App      { flex-direction: column; align-items: center; justify-content: stretch; }
+  #Options  { order: 3; flex-basis: 100px; flex-grow: 0; }
+  #Patterns { order: 2; flex-basis:   20%; flex-grow: 0; }
+  #Preview  { order: 1; flex-basis: 100px; flex-grow: 1; }
+  
+  #Patterns { --gap: 5px; overflow-y: auto; }
+  #Preview  { justify-content: flex-start; }
+}
+
+@media only screen and (min-width: 1280px) {
+  #Ap       { flex-direction: row; }
+  #Options  { order: 1; flex-basis: 100px; flex-grow: 0; }
+  #Patterns { order: 2; flex-basis:   20%; flex-grow: 0; }
+  #Preview  { order: 1; flex-basis:   50%; flex-grow: 1; }
+  
+  #Patterns { --gap: 10px; }
+  #Preview  { justify-content: center; }
+}
