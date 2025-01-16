@@ -306,7 +306,7 @@ function Pattern({ obj }){
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
-  console.log(bgImage);
+  //console.log(bgImage);
 
   return (<div
             className='Pattern'
