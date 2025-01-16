@@ -30,7 +30,6 @@ body { min-height: 100%; height: 100%; }
 #App      { display: flex; flex-direction: column; align-items: center; justify-content: center; }
 #Options  { order: 1; flex-basis: 100px; flex-grow: 0; width: 100%; }
 #Patterns { order: 2; flex-basis: 100px; flex-grow: 0; width: 100%; }
-#Patterns2 { order: 2; flex-basis: 100px; flex-grow: 0; width: 100%; }
 #Preview  { order: 3; flex-basis: 100px; flex-grow: 1; width: 100%; }
 #Code     { order: 4; flex-basis: 100px; flex-grow: 0; width: 100%; }
 
@@ -38,6 +37,8 @@ body { min-height: 100%; height: 100%; }
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(var(--minmax), 1fr) );
   gap: var(--gap); padding: var(--gap);
+  overflow-y: auto;
+  flex-basis: 20%; max-height: 30%;
 }
 #Patterns[data-viewmode="grid"]     { --minmax:  60px; }
 #Patterns[data-viewmode="grid-100"] { --minmax: 100px; }
@@ -45,20 +46,6 @@ body { min-height: 100%; height: 100%; }
 #Patterns[data-viewmode="grid-200"] { --minmax: 200px; }
 #Patterns[data-viewmode="grid-300"] { --minmax: 300px; }
 #Patterns > * { aspect-ratio: 1 }
-
-#Patterns2[data-viewmode*="grid"] {
-  display: grid;
-  grid-template-columns: repeat( auto-fit, minmax(var(--minmax), 1fr) );
-  gap: var(--gap); padding: var(--gap);
-  overflow-y: auto;
-  max-height: 30%;
-}
-#Patterns2[data-viewmode="grid"]     { --minmax:  80px; }
-#Patterns2[data-viewmode="grid-100"] { --minmax: 100px; }
-#Patterns2[data-viewmode="grid-150"] { --minmax: 150px; }
-#Patterns2[data-viewmode="grid-200"] { --minmax: 200px; }
-#Patterns2[data-viewmode="grid-300"] { --minmax: 300px; }
-#Patterns2 > * { aspect-ratio: 1 }
 
 #Preview { display: flex; flex-direction: column; justify-content: flex-end; }
 
