@@ -313,7 +313,7 @@ function Pattern({ obj }){
 function Patterns(){
   console.log( 'PATTERNS in <Patterns>', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
-            {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
+            {PATTERNS.map( pattern => <Pattern key={pattern.name} obj={pattern} /> )}
           </div>)
 }
 function Pattern2({ obj }){
@@ -346,7 +346,7 @@ function Patterns2(){
             {newPatterns.map( pattern => {
               console.log( '<Pattern2> triggered in <Patterns2>');
               console.log( '--- its obj property:', pattern );
-              return <Pattern2 obj={pattern} />
+              return <Pattern2 key={pattern.name} obj={pattern} />
             })}
           </div>)
 }
