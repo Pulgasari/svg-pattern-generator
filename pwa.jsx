@@ -26,7 +26,7 @@ const patterns = [
 
 function Pattern({ obj }){
   return (<div 
-            className='.Pattern'
+            className='Pattern'
             style={{
               height: '100px',
               width: '100px',
