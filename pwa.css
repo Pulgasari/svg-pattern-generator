@@ -59,10 +59,11 @@ textarea  { padding: var(--gap); }
 
 @media only screen and (min-width: 1280px) {
   #App      { flex-direction: row; }
-  #Options  { order: 1; flex-basis: 100px; flex-grow: 0; }
-  #Patterns { order: 2; flex-basis:   20%; flex-grow: 0; }
+  #Options  { order: 1; flex-basis: 100px; flex-grow: 1; }
+  #Patterns { order: 2; flex-basis:   20%; flex-grow: 1; max-height: unset; }
   #Preview  { order: 3; flex-basis:   50%; flex-grow: 0; }
 
   #Patterns { --gap: 10px; padding: var(--gap) 0; }
-  #Preview  { justify-content: center; }
+  #Preview  { justify-content: center; align-items: center; }
+  #Code     { max-width: 70%; }
 }
