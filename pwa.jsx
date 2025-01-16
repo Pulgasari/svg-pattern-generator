@@ -168,7 +168,7 @@ function Pattern({ obj }){
   
   return (<div 
             className='Pattern'
-            onClick={event => setPattern(obj.name)}
+            onClick={event => setPatternName(obj.name)}
             style={{
               height: '100px',
               backgroundColor: bgColor,
