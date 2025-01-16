@@ -3,7 +3,7 @@ import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
 import { atom, useAtom, useAtomValue, useSetAtom } from "https://esm.sh/jotai?dev"
 import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 
-/////////////// The Patterns /////////////// 
+/////////////// The Patterns ///////////////
 
 const PATTERNS = [
   {
@@ -76,10 +76,111 @@ const PATTERNS = [
     url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3E%3Cg fill='$FGCOLOR' fill-opacity='$FGOPACITY'%3E%3Cpath fill-rule='evenodd' d='M0 0h4v4H0V0zm4 4h4v4H4V4z'/%3E%3C/g%3E%3C/svg%3E",
     source: "heropatterns.com",
   },
-  
+
 ];
 
-/////////////// Atoms (Global States) /////////////// 
+/////////////// Atoms (Global States) ///////////////
+
+const patternsFilenamesAtom = atom([
+  '4-point-stars'
+  'anchors-away',
+  'architect',
+  'autumn',
+  'aztec',
+  'bamboo',
+  'bank-note',
+  'bathroom-floor',
+  'bevel-circle',
+  'boxes',
+  'brick-wall',
+  'bubbles',
+  'cage',
+  'charlie-brown',
+  'church-on-sunday',
+  'circles-and-squares',
+  'circuit-board',
+  'connections',
+  'cork-screw',
+  'current',
+  'curtain',
+  'cutout',
+  'death-star',
+  'diagonal-lines',
+  'diagonal-stripes',
+  'dominos',
+  'endless-clouds',
+  'eyes',
+  'falling-triangles',
+  'fancy-rectangles',
+  'flipped-diamonds',
+  'floating-cogs',
+  'floor-tile',
+  'formal-invitation',
+  'glamorous',
+  'graph-paper',
+  'groovy',
+  'happy-intersection',
+  'heavy-rain',
+  'hexagons',
+  'hideout',
+  'houndstooth',
+  'i-like-food',
+  'intersecting-circles',
+  'jigsaw',
+  'jupiter',
+  'kiwi',
+  'leaf',
+  'line-in-motion',
+  'lips',
+  'lisbon',
+  'melt',
+  'moroccan',
+  'morphing-diamonds',
+  'overcast',
+  'overlapping-circles',
+  'overlapping-diamonds',
+  'overlapping-hexagons',
+  'parkay-floor',
+  'piano-man',
+  'pie-factory',
+  'pixel-dots',
+  'plus',
+  'polka-dots',
+  'rails',
+  'rain',
+  'random-shapes',
+  'rounded-plus-connected',
+  'signal',
+  'skulls',
+  'slanted-stars',
+  'squares-in-squares',
+  'squares',
+  'stamp-collection',
+  'steel-beams',
+  'stripes',
+  'temple',
+  'texture',
+  'tic-tac-toe',
+  'tiny-checkers',
+  'topography',
+  'volcano-lamp',
+  'wallpaper',
+  'wiggle',
+  'x-equals',
+  'yyy',
+  'zig-zag'
+]);
+const patternsObjectAtom = atom( async (get) => {
+  const filenames = get(patternsFilenamesAtom);
+  let arrayObject = [];
+  filenames.forEach( filename => {
+    let file = await fetch( 'svg/' + filename + '.svg' );
+    let text = await file.text();
+    let p = { name: filename, svg: text };
+    arrayObject.push(p);
+  });
+  return arrayObject;
+});
 
 const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' );
 const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' );
@@ -92,14 +193,14 @@ const patternCodeAtom   = atom( get => {
   const pattern   = get(patternObjectAtom);
 
   if( !pattern ){ return ''; }
-  
+
   let url = pattern.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
-  
+
   return `background-color: ${bgColor}; background-image: url("${url}");`;
 });
-const patternObjectAtom = atom( get => 
+const patternObjectAtom = atom( get =>
   PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
 );
 const patternStyleAtom  = atom( get => {
@@ -114,7 +215,7 @@ const patternStyleAtom  = atom( get => {
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
-  
+
   return {
     backgroundColor: bgColor,
     backgroundImage: bgImage,
@@ -125,26 +226,26 @@ function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
   const fgColor   = useAtomValue( fgColorAtom   );
   const fgOpacity = useAtomValue( fgOpacityAtom );
-  
+
   let url = patternObject.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
-  
+
   if( returnType === 'object' ){
     return { backgroundColor: bgColor, backgroundImage: bgImage }
-  } 
+  }
   else if( returnType === 'string' ){
     return `background-color: ${bgColor}; background-image: url("${url}");`;
   }
-  
+
 }
 
 /////////////// REACT ///////////////
 
 function Code(){
   const code = useAtomValue( patternCodeAtom );
-  
+
   if( code ){
   return (<div id='Code'>
             <textarea value={code} />
@@ -157,7 +258,7 @@ function Options(){
   const [   bgColor,   setBgColor ] = useAtom( bgColorAtom   );
   const [   fgColor,   setFgColor ] = useAtom( fgColorAtom   );
   const [ fgOpacity, setFgOpacity ] = useAtom( fgOpacityAtom );
-  
+
   return (<div id='Options'>
             <div>
               <label>Background-Color</label>
@@ -178,14 +279,14 @@ function Pattern({ obj }){
   const bgColor        = useAtomValue( bgColorAtom   );
   const fgColor        = useAtomValue( fgColorAtom   );
   const fgOpacity      = useAtomValue( fgOpacityAtom );
-  
+
   let url = obj.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
           . replace( '$FGOPACITY', fgOpacity );
   let bgImage = 'url("' + url + '")';
   console.log(bgImage);
-  
-  return (<div 
+
+  return (<div
             className='Pattern'
             onClick={event => setPatternName(obj.name)}
             style={{
@@ -228,178 +329,3 @@ window.onload = () => {
 }
 
 
-let files = `
-4-point-stars.svg
-8 minutes ago
-anchors-away.svg
-8 minutes ago
-architect.svg
-8 minutes ago
-autumn.svg
-8 minutes ago
-aztec.svg
-8 minutes ago
-bamboo.svg
-8 minutes ago
-bank-note.svg
-8 minutes ago
-bathroom-floor.svg
-8 minutes ago
-bevel-circle.svg
-8 minutes ago
-boxes.svg
-8 minutes ago
-brick-wall.svg
-8 minutes ago
-bubbles.svg
-8 minutes ago
-cage.svg
-8 minutes ago
-charlie-brown.svg
-8 minutes ago
-church-on-sunday.svg
-8 minutes ago
-circles-and-squares.svg
-8 minutes ago
-circuit-board.svg
-8 minutes ago
-connections.svg
-8 minutes ago
-cork-screw.svg
-8 minutes ago
-current.svg
-8 minutes ago
-curtain.svg
-8 minutes ago
-cutout.svg
-8 minutes ago
-death-star.svg
-8 minutes ago
-diagonal-lines.svg
-8 minutes ago
-diagonal-stripes.svg
-8 minutes ago
-dominos.svg
-8 minutes ago
-endless-clouds.svg
-8 minutes ago
-eyes.svg
-8 minutes ago
-falling-triangles.svg
-8 minutes ago
-fancy-rectangles.svg
-8 minutes ago
-flipped-diamonds.svg
-8 minutes ago
-floating-cogs.svg
-8 minutes ago
-floor-tile.svg
-8 minutes ago
-formal-invitation.svg
-8 minutes ago
-glamorous.svg
-8 minutes ago
-graph-paper.svg
-8 minutes ago
-groovy.svg
-8 minutes ago
-happy-intersection.svg
-8 minutes ago
-heavy-rain.svg
-8 minutes ago
-hexagons.svg
-8 minutes ago
-hideout.svg
-8 minutes ago
-houndstooth.svg
-8 minutes ago
-i-like-food.svg
-8 minutes ago
-intersecting-circles.svg
-8 minutes ago
-jigsaw.svg
-8 minutes ago
-jupiter.svg
-8 minutes ago
-kiwi.svg
-8 minutes ago
-leaf.svg
-8 minutes ago
-line-in-motion.svg
-8 minutes ago
-lips.svg
-8 minutes ago
-lisbon.svg
-8 minutes ago
-melt.svg
-8 minutes ago
-moroccan.svg
-8 minutes ago
-morphing-diamonds.svg
-8 minutes ago
-overcast.svg
-8 minutes ago
-overlapping-circles.svg
-8 minutes ago
-overlapping-diamonds.svg
-8 minutes ago
-overlapping-hexagons.svg
-8 minutes ago
-parkay-floor.svg
-8 minutes ago
-piano-man.svg
-8 minutes ago
-pie-factory.svg
-8 minutes ago
-pixel-dots.svg
-8 minutes ago
-plus.svg
-8 minutes ago
-polka-dots.svg
-8 minutes ago
-rails.svg
-8 minutes ago
-rain.svg
-8 minutes ago
-random-shapes.svg
-8 minutes ago
-rounded-plus-connected.svg
-8 minutes ago
-signal.svg
-8 minutes ago
-skulls.svg
-8 minutes ago
-slanted-stars.svg
-8 minutes ago
-squares-in-squares.svg
-8 minutes ago
-squares.svg
-8 minutes ago
-stamp-collection.svg
-8 minutes ago
-steel-beams.svg
-8 minutes ago
-stripes.svg
-8 minutes ago
-temple.svg
-8 minutes ago
-texture.svg
-8 minutes ago
-tic-tac-toe.svg
-8 minutes ago
-tiny-checkers.svg
-8 minutes ago
-topography.svg
-8 minutes ago
-volcano-lamp.svg
-8 minutes ago
-wallpaper.svg
-8 minutes ago
-wiggle.svg
-8 minutes ago
-x-equals.svg
-8 minutes ago
-yyy.svg
-8 minutes ago
-zig-zag.svg
-`;
