@@ -124,13 +124,14 @@ function Pattern({ obj }){
   let url = obj.url
           . replace(   'FG-COLOR', fgColor   )
           . replace( 'FG-OPACITY', fgOpacity );
-          
+  let bgImage = `url('${obj.url}')`;
+  
   return (<div 
             className='Pattern'
             style={{
               height: '100px',
-              backgroundColor: '#DFDBE5',
-              backgroundImage: `url(\"${obj.url}\")`
+              backgroundColor: bgColor,
+              backgroundImage: bgImage
             }}
           ></div>);
 }
