@@ -346,7 +346,7 @@ function Patterns2(){
             {newPatterns.map( pattern => {
               console.log( '<Pattern2> triggered in <Patterns2>');
               console.log( '--- its obj property:', pattern );
-              return <Pattern obj={pattern} />
+              return <Pattern2 obj={pattern} />
             })}
           </div>)
 }
