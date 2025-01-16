@@ -486,14 +486,14 @@ function svgStringToEncoded( str ){
     // Encoding
     // ----------------------------------------
     // Use single quotes instead of double to avoid encoding.
-    if (externalQuotesValue === `double`) {
-      data = data.replace(/"/g, `'`);
+    if( externalQuotesValue === 'double' ){
+      data = data.replace( /"/g, `'` );
     } else {
-      data = data.replace(/'/g, `"`);
+      data = data.replace( /'/g, `"` );
     }
 
-    data = data.replace(/>\s{1,}</g, `><`);
-    data = data.replace(/\s{2,}/g, ` `);
+    data = data.replace(/>\s{1,}</g, '><');
+    data = data.replace(/\s{2,}/g, ' ');
 
     // Using encodeURIComponent() as replacement function
     // allows to keep result code readable
