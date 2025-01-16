@@ -1,0 +1,7 @@
+#Patterns[data-viewmode*="grid"]         { display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--minmax), 1fr) ); }
+#Patterns[data-viewmode*="grid"] article { flex-direction: column; gap: 5px; }
+#Patterns[data-viewmode="grid"]     { --minmax: 140px; }
+#Patterns[data-viewmode="grid-100"] { --minmax: 100px; }
+#Patterns[data-viewmode="grid-150"] { --minmax: 150px; }
+#Patterns[data-viewmode="grid-200"] { --minmax: 200px; }
+#Patterns[data-viewmode="grid-300"] { --minmax: 300px; }

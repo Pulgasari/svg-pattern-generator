@@ -5,9 +5,9 @@ import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 
 //========= Atoms (Global States) =========
 
-const backgroundColor   = atomWithStorage( 'bg-color', '#DFDBE5' );
-const foregroundColor   = atomWithStorage( 'fg-color', '#9C92AC' );
-const foregroundOpacity = atomWithStorage( 'fg-opacity', '0' );
+const backgroundColorAtom   = atomWithStorage( 'bg-color', '#DFDBE5' );
+const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
+const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '0' );
 
 /////////////// THE PWA ///////////////
 
@@ -25,6 +25,14 @@ const patterns = [
 ];
 
 function Pattern({ obj }){
+  const bgColor   = useAtomValue( backgroundColorAtom   );
+  const fgColor   = useAtomValue( foregroundColorAtom   );
+  const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  
+  let url = obj.url
+          . replace(   'FG-COLOR', fgColor   )
+          . replace( 'FG-OPACITY', fgOpacity );
+          
   return (<div 
             className='Pattern'
             style={{
@@ -42,7 +50,7 @@ function Options(){
           </div>)
 }
 function Patterns(){
-  return (<div id='Patterns'>
+  return (<div id='Patterns' data-viewmode='grid-100'>
             {patterns.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
