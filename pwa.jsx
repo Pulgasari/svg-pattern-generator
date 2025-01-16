@@ -8,7 +8,7 @@ import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 const backgroundColorAtom   = atomWithStorage( 'bg-color', '#DFDBE5' );
 const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
 const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '0' );
-const patternAtom           = atomWithStorage( 'pattern', '' );
+const patternNameAtom       = atomWithStorage( 'pattern-name', '' );
 
 /////////////// REACT ///////////////
 
@@ -117,6 +117,7 @@ function Options(){
           </div>)
 }
 function Pattern({ obj }){
+  const setPatternName = useSetAtom( patternNameAtom );
   const bgColor   = useAtomValue( backgroundColorAtom   );
   const fgColor   = useAtomValue( foregroundColorAtom   );
   const fgOpacity = useAtomValue( foregroundOpacityAtom );
@@ -129,6 +130,7 @@ function Pattern({ obj }){
   
   return (<div 
             className='Pattern'
+            onClick={event => setPattern(obj.name)}
             style={{
               height: '100px',
               backgroundColor: bgColor,
@@ -142,17 +144,23 @@ function Patterns(){
           </div>)
 }
 function Preview(){
-  const bgColor   = useAtomValue( backgroundColorAtom   );
-  const fgColor   = useAtomValue( foregroundColorAtom   );
-  const fgOpacity = useAtomValue( foregroundOpacityAtom );
-  const pattern   = useAtomValue( patternAtom );
+  const bgColor     = useAtomValue( backgroundColorAtom   );
+  const fgColor     = useAtomValue( foregroundColorAtom   );
+  const fgOpacity   = useAtomValue( foregroundOpacityAtom );
+  const patternName = useAtomValue( patternNameAtom );
+  const pattern     = patterns.find( pattern => pattern.name === patternName );
+  
+  let url = pattern.url
+          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
+          . replace( '$FGOPACITY', fgOpacity );
+  let bgImage = 'url("' + pattern.url + '")';
   
   if(pattern){
     <div 
       id='Preview'
       style={{
-        backgroundColor: '#DFDBE5',
-        backgroundImage: `url(${obj.url})`
+        backgroundColor: bgColor,
+        backgroundImage: bgImage,
       }}
    ></div>
   } else {
