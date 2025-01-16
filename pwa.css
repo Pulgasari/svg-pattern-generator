@@ -64,3 +64,8 @@ textarea  { padding: var(--gap); }
   #Preview  { justify-content: center; align-items: center; }
   #Code     { width: 80%; }
 }
+
+#App > *              { box-shadow: 0 0 20px #0009; }
+#App > *:nth-child(1) { z-index: 3; }
+#App > *:nth-child(2) { z-index: 2; }
+#App > *:nth-child(3) { z-index: 1; }
