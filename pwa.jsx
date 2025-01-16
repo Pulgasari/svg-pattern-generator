@@ -68,7 +68,7 @@ function Code(){
 // Render
 var r = <><Options/><Patterns/><Preview/><Code/></>;
 ReactDOMClient.createRoot( 
-  document.getElementById('app') 
+  document.getElementById('App') 
 ).render(r);
 
 
