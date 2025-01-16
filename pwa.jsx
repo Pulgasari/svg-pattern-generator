@@ -139,12 +139,17 @@ const patternsObjectAtom = atom( async (get) => {
   const filenames = get(patternsFilenamesAtom);
   let arrayObject = [];
   filenames.forEach( async (filename) => {
-    let file = await fetch( 'svg/' + filename + '.svg' );
-    let text = await file.text();
+    let file             = await fetch( 'svg/' + filename + '.svg' );
+    let svgString        = await file.text();
+    let svgStringEncoded = svgStringToEncodedUrlString(svgString);
+    console.log(     'filename:', filename );
+    console.log( 'svg-original:', svgString );
+    console.log(  'svg-encoded:', svgStringEncoded );
+    console.log('---------------------------------');
     let p = {
       name: filename,
-      svg: text,
-      url: svgStringToEncodedUrlString(text)
+       svg: svgString,
+       url: svgStringEncoded
     };
     arrayObject.push(p);
   });
