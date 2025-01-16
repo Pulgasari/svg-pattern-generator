@@ -174,7 +174,7 @@ const patternsFilenamesAtom = atom([
 const patternsObjectAtom = atom( async (get) => {
   const filenames = get(patternsFilenamesAtom);
   let arrayObject = [];
-  filenames.forEach( filename => {
+  filenames.forEach( async (filename) => {
     let file = await fetch( 'svg/' + filename + '.svg' );
     let text = await file.text();
     let p = {
