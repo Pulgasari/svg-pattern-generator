@@ -178,6 +178,7 @@ function svgStringToEncoded( str ){
 
     // Using encodeURIComponent() as replacement function
     // allows to keep result code readable
+    const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
     data = data.replace(symbols, encodeURIComponent);
 
     // Return
