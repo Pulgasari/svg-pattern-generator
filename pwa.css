@@ -1,6 +1,25 @@
-#Patterns[data-viewmode*="grid"]         { display: grid; grid-template-columns: repeat( auto-fit, minmax(var(--minmax), 1fr) ); }
-#Patterns[data-viewmode*="grid"] article { flex-direction: column; gap: 5px; }
-#Patterns[data-viewmode="grid"]     { --minmax: 140px; }
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: "Montserrat";
+  margin: 0;
+  padding: 0;
+}
+a { text-decoration: none; }
+button { border: none; }
+button, i.fa-solid { cursor: pointer; }
+img { max-width: 100%; }
+input { background: none; border: none; }
+select { border: none; }
+
+/*//////////*/
+
+#Patterns[data-viewmode*="grid"] { 
+  display: grid; 
+  grid-template-columns: repeat( auto-fit, minmax(var(--minmax), 1fr) );
+  gap: 10px;
+}
 #Patterns[data-viewmode="grid-100"] { --minmax: 100px; }
 #Patterns[data-viewmode="grid-150"] { --minmax: 150px; }
 #Patterns[data-viewmode="grid-200"] { --minmax: 200px; }
