@@ -10,6 +10,11 @@ const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
 const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '0' );
 const patternNameAtom       = atomWithStorage( 'pattern-name', '' );
 
+//const currentPatternName   = atomWithStorage( 'pattern-name', '' );
+//const currentPatternCode   = atom('');
+//const currentPatternObject = atom({});
+//const currentPatternStyle  = atom({});
+
 /////////////// REACT ///////////////
 
 const patterns = [
