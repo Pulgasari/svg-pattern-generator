@@ -13,6 +13,7 @@ select { border: none; }
 /* Fonts & Text */
 
 body { font-family: "Montserrat"; }
+textarea { font-family: mono; font-size: 0.6rem; }
 
 /* COLORS */
 
