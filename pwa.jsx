@@ -184,7 +184,7 @@ function Patterns(){
 function Preview(){
   const style = useAtomValue( patternStyleAtom );
   if( style ){
-    <div id='Preview'style={style}></div>
+    <div id='Preview' style={style}></div>
   } else {
     <div id='Preview'>No Pattern was selected.</div>
   }
