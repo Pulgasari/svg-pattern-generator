@@ -347,6 +347,12 @@ function Patterns(){
             {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
+function Patterns2(){
+  let patterns = useAtomValue(patternsObjectAtom);
+  return (<div id='Patterns' data-viewmode='grid'>
+            {patterns.map( pattern => <Pattern obj={pattern} /> )}
+          </div>)
+}
 function Preview(){
   const style = useAtomValue( patternStyleAtom );
   if( style ){
