@@ -117,10 +117,10 @@ function Options(){
           </div>)
 }
 function Pattern({ obj }){
-  const setPatternName = useSetAtom( patternNameAtom );
-  const bgColor   = useAtomValue( backgroundColorAtom   );
-  const fgColor   = useAtomValue( foregroundColorAtom   );
-  const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  const setPatternName =   useSetAtom( patternNameAtom       );
+  const bgColor        = useAtomValue( backgroundColorAtom   );
+  const fgColor        = useAtomValue( foregroundColorAtom   );
+  const fgOpacity      = useAtomValue( foregroundOpacityAtom );
   
   let url = obj.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
@@ -148,14 +148,15 @@ function Preview(){
   const fgColor     = useAtomValue( foregroundColorAtom   );
   const fgOpacity   = useAtomValue( foregroundOpacityAtom );
   const patternName = useAtomValue( patternNameAtom );
-  const pattern     = patterns.find( pattern => pattern.name === patternName );
   
-  let url = pattern.url
-          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
-          . replace( '$FGOPACITY', fgOpacity );
-  let bgImage = 'url("' + pattern.url + '")';
+  if( patternName ){
+    const pattern = patterns.find( pattern => pattern.name === patternName );
   
-  if(pattern){
+    let url = pattern.url
+            . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
+            . replace( '$FGOPACITY', fgOpacity );
+    let bgImage = 'url("' + pattern.url + '")';
+  
     <div 
       id='Preview'
       style={{
