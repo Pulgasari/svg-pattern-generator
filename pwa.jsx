@@ -177,7 +177,7 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
-  return (<div id='Patterns' data-viewmode='grid-100'>
+  return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
