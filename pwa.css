@@ -14,6 +14,10 @@ select { border: none; }
 
 body { font-family: "Montserrat"; }
 
+/* COLORS */
+
+body { background: #202020; color: #DDD; }
+
 /*//////////*/
 
 #App      { display: flex; flex-direction: column; }
