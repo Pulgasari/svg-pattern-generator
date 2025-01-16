@@ -1,6 +1,7 @@
 import React from "https://esm.sh/react@19/?dev"
 import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
 import { atom, useAtom, useAtomValue, useSetAtom } from "https://esm.sh/jotai?dev"
+import { atomWithQuery } from "https://esm.sh/jotai-tanstack-query?dev"
 import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 
 /////////////// The Patterns ///////////////
@@ -176,11 +177,57 @@ const patternsObjectAtom = atom( async (get) => {
   filenames.forEach( filename => {
     let file = await fetch( 'svg/' + filename + '.svg' );
     let text = await file.text();
-    let p = { name: filename, svg: text };
+    let p = {
+      name: filename,
+      svg: text,
+      url: svgStringToEncodedCSS(text)
+    };
     arrayObject.push(p);
   });
   return arrayObject;
 });
+
+function svgStringToEncoded( str ){
+
+  if(str){
+
+    let data = str;
+    let externalQuotesValue = 'double'; // 'single'
+
+    // Namespace
+    // ----------------------------------------
+    if( data.indexOf(`http://www.w3.org/2000/svg`) < 0 ){
+      data = data.replace(/<svg/g, `<svg xmlns=${quotes.level2}http://www.w3.org/2000/svg${quotes.level2}`);
+    }
+
+    // Encoding
+    // ----------------------------------------
+    // Use single quotes instead of double to avoid encoding.
+    if (externalQuotesValue === `double`) {
+      data = data.replace(/"/g, `'`);
+    } else {
+      data = data.replace(/'/g, `"`);
+    }
+
+    data = data.replace(/>\s{1,}</g, `><`);
+    data = data.replace(/\s{2,}/g, ` `);
+
+    // Using encodeURIComponent() as replacement function
+    // allows to keep result code readable
+    data = data.replace(symbols, encodeURIComponent);
+
+    // Return
+    // ----------------------------------------
+    return data;
+  }
+
+  return '';
+
+}
+function svgStringToEncodedCSS( str, quotes = "'" ){
+  let svg = svgStringToEncoded(str);
+  return `background-image: url(${quotes}data:image/svg+xml,${svg}${quotes});`;
+}
 
 const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' );
 const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' );
