@@ -1,14 +1,13 @@
 import React from "https://esm.sh/react@19/?dev"
 import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
+import { atom, useAtom, useAtomValue, useSetAtom } from "https://esm.sh/jotai?dev"
+import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 
-//========= Register Service Worker =========
+//========= Atoms (Global States) =========
 
-window.onload = () => {
-  'use strict';
-  if( 'serviceWorker' in navigator ){
-    navigator.serviceWorker.register('sw.js');
-  }
-}
+const backgroundColor   = atomWithStorage( 'bg-color', '#DFDBE5' );
+const foregroundColor   = atomWithStorage( 'fg-color', '#9C92AC' );
+const foregroundOpacity = atomWithStorage( 'fg-opacity', '0' );
 
 /////////////// THE PWA ///////////////
 
@@ -63,3 +62,15 @@ var r = <><Options/><Patterns/><Preview/><Code/></>;
 ReactDOMClient.createRoot( 
   document.getElementById('app') 
 ).render(r);
+
+
+/////////////// ... ///////////////
+
+//========= Register Service Worker =========
+
+window.onload = () => {
+  'use strict';
+  if( 'serviceWorker' in navigator ){
+    navigator.serviceWorker.register('sw.js');
+  }
+}
