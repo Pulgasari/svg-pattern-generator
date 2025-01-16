@@ -3,13 +3,14 @@ import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
 import { atom, useAtom, useAtomValue, useSetAtom } from "https://esm.sh/jotai?dev"
 import { atomWithStorage } from "https://esm.sh/jotai/utils?dev"
 
-//========= Atoms (Global States) =========
+/////////////// Atoms (Global States) /////////////// 
 
 const backgroundColorAtom   = atomWithStorage( 'bg-color', '#DFDBE5' );
 const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
 const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '0' );
+const patternAtom           = atomWithStorage( 'pattern', '' );
 
-/////////////// THE PWA ///////////////
+/////////////// REACT ///////////////
 
 const patterns = [
   {
@@ -55,21 +56,39 @@ function Patterns(){
           </div>)
 }
 function Preview(){
-  return (<div id='Options'>
-            Preview
-          </div>)
+  const bgColor   = useAtomValue( backgroundColorAtom   );
+  const fgColor   = useAtomValue( foregroundColorAtom   );
+  const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  const pattern   = useAtomValue( patternAtom );
+  
+  if(pattern){
+    <div 
+      id='Preview'
+      style={{
+              backgroundColor: '#DFDBE5',
+              backgroundImage: `url(${obj.url})`
+            }}
+   ></div>
+  } else {
+    <div id='Preview'>No Pattern was selected.</div>
+  }
+  
 }
 function Code(){
+  const bgColor   = useAtomValue( backgroundColorAtom   );
+  const fgColor   = useAtomValue( foregroundColorAtom   );
+  const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  const pattern   = useAtomValue( patternAtom );
+  
   return (<div id='Code'>
             Code
           </div>)
 }
 
-// Render
+/////////////// RENDER REACT ///////////////
+
 var r = <><Options/><Patterns/><Preview/><Code/></>;
-ReactDOMClient.createRoot( 
-  document.getElementById('App') 
-).render(r);
+ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
 
 /////////////// ... ///////////////
