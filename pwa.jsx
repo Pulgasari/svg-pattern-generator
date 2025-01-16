@@ -226,3 +226,180 @@ window.onload = () => {
     navigator.serviceWorker.register('sw.js');
   }
 }
+
+
+let files = `
+4-point-stars.svg
+8 minutes ago
+anchors-away.svg
+8 minutes ago
+architect.svg
+8 minutes ago
+autumn.svg
+8 minutes ago
+aztec.svg
+8 minutes ago
+bamboo.svg
+8 minutes ago
+bank-note.svg
+8 minutes ago
+bathroom-floor.svg
+8 minutes ago
+bevel-circle.svg
+8 minutes ago
+boxes.svg
+8 minutes ago
+brick-wall.svg
+8 minutes ago
+bubbles.svg
+8 minutes ago
+cage.svg
+8 minutes ago
+charlie-brown.svg
+8 minutes ago
+church-on-sunday.svg
+8 minutes ago
+circles-and-squares.svg
+8 minutes ago
+circuit-board.svg
+8 minutes ago
+connections.svg
+8 minutes ago
+cork-screw.svg
+8 minutes ago
+current.svg
+8 minutes ago
+curtain.svg
+8 minutes ago
+cutout.svg
+8 minutes ago
+death-star.svg
+8 minutes ago
+diagonal-lines.svg
+8 minutes ago
+diagonal-stripes.svg
+8 minutes ago
+dominos.svg
+8 minutes ago
+endless-clouds.svg
+8 minutes ago
+eyes.svg
+8 minutes ago
+falling-triangles.svg
+8 minutes ago
+fancy-rectangles.svg
+8 minutes ago
+flipped-diamonds.svg
+8 minutes ago
+floating-cogs.svg
+8 minutes ago
+floor-tile.svg
+8 minutes ago
+formal-invitation.svg
+8 minutes ago
+glamorous.svg
+8 minutes ago
+graph-paper.svg
+8 minutes ago
+groovy.svg
+8 minutes ago
+happy-intersection.svg
+8 minutes ago
+heavy-rain.svg
+8 minutes ago
+hexagons.svg
+8 minutes ago
+hideout.svg
+8 minutes ago
+houndstooth.svg
+8 minutes ago
+i-like-food.svg
+8 minutes ago
+intersecting-circles.svg
+8 minutes ago
+jigsaw.svg
+8 minutes ago
+jupiter.svg
+8 minutes ago
+kiwi.svg
+8 minutes ago
+leaf.svg
+8 minutes ago
+line-in-motion.svg
+8 minutes ago
+lips.svg
+8 minutes ago
+lisbon.svg
+8 minutes ago
+melt.svg
+8 minutes ago
+moroccan.svg
+8 minutes ago
+morphing-diamonds.svg
+8 minutes ago
+overcast.svg
+8 minutes ago
+overlapping-circles.svg
+8 minutes ago
+overlapping-diamonds.svg
+8 minutes ago
+overlapping-hexagons.svg
+8 minutes ago
+parkay-floor.svg
+8 minutes ago
+piano-man.svg
+8 minutes ago
+pie-factory.svg
+8 minutes ago
+pixel-dots.svg
+8 minutes ago
+plus.svg
+8 minutes ago
+polka-dots.svg
+8 minutes ago
+rails.svg
+8 minutes ago
+rain.svg
+8 minutes ago
+random-shapes.svg
+8 minutes ago
+rounded-plus-connected.svg
+8 minutes ago
+signal.svg
+8 minutes ago
+skulls.svg
+8 minutes ago
+slanted-stars.svg
+8 minutes ago
+squares-in-squares.svg
+8 minutes ago
+squares.svg
+8 minutes ago
+stamp-collection.svg
+8 minutes ago
+steel-beams.svg
+8 minutes ago
+stripes.svg
+8 minutes ago
+temple.svg
+8 minutes ago
+texture.svg
+8 minutes ago
+tic-tac-toe.svg
+8 minutes ago
+tiny-checkers.svg
+8 minutes ago
+topography.svg
+8 minutes ago
+volcano-lamp.svg
+8 minutes ago
+wallpaper.svg
+8 minutes ago
+wiggle.svg
+8 minutes ago
+x-equals.svg
+8 minutes ago
+yyy.svg
+8 minutes ago
+zig-zag.svg
+`;
