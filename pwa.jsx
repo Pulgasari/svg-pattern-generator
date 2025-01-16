@@ -142,10 +142,10 @@ const patternsObjectAtom = atom( async (get) => {
     let file             = await fetch( 'svg/' + filename + '.svg' );
     let svgString        = await file.text();
     let svgStringEncoded = svgStringToEncodedUrlString(svgString);
-    console.log(     'filename:', filename         );
-    console.log( 'svg-original:', svgString        );
-    console.log(  'svg-encoded:', svgStringEncoded );
-    console.log('---------------------------------');
+    // console.log(     'filename:', filename         );
+    // console.log( 'svg-original:', svgString        );
+    // console.log(  'svg-encoded:', svgStringEncoded );
+    // console.log('---------------------------------');
     let p = {
       name: filename,
        svg: svgString,
@@ -153,6 +153,7 @@ const patternsObjectAtom = atom( async (get) => {
     };
     arrayObject.push(p);
   });
+  console.log( 'arrayObject', arrayObject );
   return arrayObject;
 });
 
