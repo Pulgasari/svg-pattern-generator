@@ -81,14 +81,14 @@ const PATTERNS = [
 
 /////////////// Atoms (Global States) /////////////// 
 
-const backgroundColorAtom   = atomWithStorage( 'bg-color', '#DFDBE5' );
-const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
-const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '1' );
-const patternNameAtom       = atomWithStorage( 'pattern-name', '' );
+const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' );
+const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' );
+const fgOpacityAtom     = atomWithStorage( 'fg-opacity', '1' );
+const patternNameAtom   = atomWithStorage( 'pattern-name', '' );
 const patternCodeAtom   = atom( get => {
-  const bgColor   = get(backgroundColorAtom);
-  const fgColor   = get(foregroundColorAtom);
-  const fgOpacity = get(foregroundOpacityAtom);
+  const bgColor   = get(bgColorAtom);
+  const fgColor   = get(fgColorAtom);
+  const fgOpacity = get(fgOpacityAtom);
   const pattern   = get(patternObjectAtom);
 
   if( !pattern ){ return ''; }
@@ -105,9 +105,9 @@ const patternObjectAtom = atom( get =>
   PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
 );
 const patternStyleAtom  = atom( get => {
-  const bgColor   = get(backgroundColorAtom);
-  const fgColor   = get(foregroundColorAtom);
-  const fgOpacity = get(foregroundOpacityAtom);
+  const bgColor   = get(bgColorAtom);
+  const fgColor   = get(fgColorAtom);
+  const fgOpacity = get(fgOpacityAtom);
   const pattern   = get(patternObjectAtom);
 
   let url = pattern.url
@@ -133,9 +133,9 @@ function Code(){
           </div>)
 }
 function Options(){
-  const [   bgColor,   setBgColor ] = useAtom( backgroundColorAtom   );
-  const [   fgColor,   setFgColor ] = useAtom( foregroundColorAtom   );
-  const [ fgOpacity, setFgOpacity ] = useAtom( foregroundOpacityAtom );
+  const [   bgColor,   setBgColor ] = useAtom( bgColorAtom   );
+  const [   fgColor,   setFgColor ] = useAtom( fgColorAtom   );
+  const [ fgOpacity, setFgOpacity ] = useAtom( fgOpacityAtom );
   
   return (<div id='Options'>
             <div>
@@ -154,9 +154,9 @@ function Options(){
 }
 function Pattern({ obj }){
   const setPatternName =   useSetAtom( patternNameAtom       );
-  const bgColor        = useAtomValue( backgroundColorAtom   );
-  const fgColor        = useAtomValue( foregroundColorAtom   );
-  const fgOpacity      = useAtomValue( foregroundOpacityAtom );
+  const bgColor        = useAtomValue( bgColorAtom   );
+  const fgColor        = useAtomValue( fgColorAtom   );
+  const fgOpacity      = useAtomValue( fgOpacityAtom );
   
   let url = obj.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
@@ -180,9 +180,9 @@ function Patterns(){
           </div>)
 }
 function Preview(){
-  const bgColor     = useAtomValue( backgroundColorAtom   );
-  const fgColor     = useAtomValue( foregroundColorAtom   );
-  const fgOpacity   = useAtomValue( foregroundOpacityAtom );
+  const bgColor     = useAtomValue( bgColorAtom   );
+  const fgColor     = useAtomValue( fgColorAtom   );
+  const fgOpacity   = useAtomValue( fgOpacityAtom );
   const patternName = useAtomValue( patternNameAtom );
   
   if( patternName ){
