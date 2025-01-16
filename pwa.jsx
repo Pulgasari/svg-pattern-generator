@@ -568,6 +568,9 @@ const patternCodeAtom   = atom( get => {
 const patternObjectAtom = atom( get =>
   PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
 );
+const patternObjectAtom2 = atom( get =>
+  PATTERNS2.find( pattern => pattern.name === get(patternNameAtom) ) || null
+);
 const patternStyleAtom  = atom( get => {
   const bgColor   = get(bgColorAtom);
   const fgColor   = get(fgColorAtom);
@@ -590,11 +593,11 @@ const patternStyleAtom2  = atom( get => {
   const bgColor   = get(bgColorAtom);
   const fgColor   = get(fgColorAtom);
   const fgOpacity = get(fgOpacityAtom);
-  const pattern   = get(patternObjectAtom);
+  const pattern   = get(patternObjectAtom2);
 
   if( !pattern ){ return {}; }
 
-  let url = obj.url
+  let url = pattern.url
           . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
           . replace('#','%23')
   let bgImage = 'url("' + url + '")';
