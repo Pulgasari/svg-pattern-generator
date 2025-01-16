@@ -83,7 +83,7 @@ const PATTERNS = [
 
 const backgroundColorAtom   = atomWithStorage( 'bg-color', '#DFDBE5' );
 const foregroundColorAtom   = atomWithStorage( 'fg-color', '#9C92AC' );
-const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '0' );
+const foregroundOpacityAtom = atomWithStorage( 'fg-opacity', '1' );
 const patternNameAtom       = atomWithStorage( 'pattern-name', '' );
 const patternCodeAtom   = atom( get => {
   const bgColor   = get(backgroundColorAtom);
@@ -140,15 +140,15 @@ function Options(){
   return (<div id='Options'>
             <div>
               <label>Background-Color</label>
-              <input type='color' onChange={ event => setBgColor(event.target.value) } />
+              <input type='color' value={bgColor} onChange={ event => setBgColor(event.target.value) } />
             </div>
             <div>
               <label>Foreground-Color</label>
-              <input type='color' onChange={ event => setFgColor(event.target.value) } />
+              <input type='color' value={fgColor} onChange={ event => setFgColor(event.target.value) } />
             </div>
             <div>
               <label>Foreground-Opacity</label>
-              <input type='range' min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
+              <input type='range' value={fgOpacity} min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
             </div>
           </div>)
 }
