@@ -363,7 +363,7 @@ function Preview(){
 
 /////////////// RENDER REACT ///////////////
 
-var r = <><Options/><Patterns2/><Preview/></>;
+var r = <><Options/><Patterns/><Patterns2/><Preview/></>;
 ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
 /////////////// ... ///////////////
