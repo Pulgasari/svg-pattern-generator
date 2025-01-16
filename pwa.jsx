@@ -170,7 +170,6 @@ function Pattern({ obj }){
             className='Pattern'
             onClick={event => setPatternName(obj.name)}
             style={{
-              height: '100px',
               backgroundColor: bgColor,
               backgroundImage: bgImage,
             }}
