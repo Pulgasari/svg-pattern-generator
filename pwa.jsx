@@ -619,6 +619,7 @@ function Pattern({ obj }){
 
   return (<div
             className='Pattern'
+            title={obj.name}
             onClick={event => setPatternName(obj.name)}
             style={{
               backgroundColor: bgColor,
