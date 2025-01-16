@@ -318,10 +318,9 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
-  let patterns = useAtomValue(patternsObjectAtom);
   console.log( 'PATTERNS in <Patterns>', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
-            {patterns.map( pattern => <Pattern obj={pattern} /> )}
+            {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
 function Pattern2({ obj }){
@@ -329,6 +328,8 @@ function Pattern2({ obj }){
   const bgColor        = useAtomValue( bgColorAtom   );
   const fgColor        = useAtomValue( fgColorAtom   );
   const fgOpacity      = useAtomValue( fgOpacityAtom );
+
+  console.log( '<Pattern2> triggered');
 
   let url = obj.url
           . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
@@ -349,7 +350,11 @@ function Patterns2(){
   let patterns = useAtomValue(patternsObjectAtom);
   console.log( 'patterns in <Patterns2>', patterns );
   return (<div id='Patterns2' data-viewmode='grid'>
-            {patterns.map( pattern => <Pattern obj={pattern} /> )}
+            {patterns.map( pattern => {
+              console.log( '<Pattern2> triggered in <Patterns2>');
+              console.log( '--- its obk property:', pattern );
+              return <Pattern obj={pattern} />
+            })}
           </div>)
 }
 function Preview(){
