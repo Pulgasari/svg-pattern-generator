@@ -122,8 +122,8 @@ function Pattern({ obj }){
   const fgOpacity = useAtomValue( foregroundOpacityAtom );
   
   let url = obj.url
-          . replace(   'FG-COLOR', fgColor   )
-          . replace( 'FG-OPACITY', fgOpacity );
+          . replace(   '$FGCOLOR', fgColor   )
+          . replace( '$FGOPACITY', fgOpacity );
   let bgImage = `url('${obj.url}')`;
   
   return (<div 
