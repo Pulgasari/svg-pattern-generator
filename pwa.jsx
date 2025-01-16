@@ -318,9 +318,10 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
+  let patterns = useAtomValue(patternsObjectAtom);
   console.log( 'PATTERNS in <Patterns>', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
-            {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
+            {patterns.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
 function Pattern2({ obj }){
