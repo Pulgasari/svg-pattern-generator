@@ -25,24 +25,15 @@ const patterns = [
   }
 ];
 
-function Pattern({ obj }){
+function Code(){
   const bgColor   = useAtomValue( backgroundColorAtom   );
   const fgColor   = useAtomValue( foregroundColorAtom   );
   const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  const pattern   = useAtomValue( patternAtom );
   
-  let url = obj.url
-          . replace(   'FG-COLOR', fgColor   )
-          . replace( 'FG-OPACITY', fgOpacity );
-          
-  return (<div 
-            className='Pattern'
-            style={{
-              height: '100px',
-              width: '100px',
-              backgroundColor: '#DFDBE5',
-              backgroundImage: `url(${obj.url})`
-            }}
-          ></div>);
+  return (<div id='Code'>
+            Code
+          </div>)
 }
 function Options(){
   const [   bgColor,   setBgColor ] = useAtom( backgroundColorAtom   );
@@ -63,6 +54,24 @@ function Options(){
               <input type='range' min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
             </div>
           </div>)
+}
+function Pattern({ obj }){
+  const bgColor   = useAtomValue( backgroundColorAtom   );
+  const fgColor   = useAtomValue( foregroundColorAtom   );
+  const fgOpacity = useAtomValue( foregroundOpacityAtom );
+  
+  let url = obj.url
+          . replace(   'FG-COLOR', fgColor   )
+          . replace( 'FG-OPACITY', fgOpacity );
+          
+  return (<div 
+            className='Pattern'
+            style={{
+              height: '100px',
+              backgroundColor: '#DFDBE5',
+              backgroundImage: `url(${obj.url})`
+            }}
+          ></div>);
 }
 function Patterns(){
   return (<div id='Patterns' data-viewmode='grid-100'>
@@ -87,16 +96,6 @@ function Preview(){
     <div id='Preview'>No Pattern was selected.</div>
   }
   
-}
-function Code(){
-  const bgColor   = useAtomValue( backgroundColorAtom   );
-  const fgColor   = useAtomValue( foregroundColorAtom   );
-  const fgOpacity = useAtomValue( foregroundOpacityAtom );
-  const pattern   = useAtomValue( patternAtom );
-  
-  return (<div id='Code'>
-            Code
-          </div>)
 }
 
 /////////////// RENDER REACT ///////////////
