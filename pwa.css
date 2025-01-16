@@ -48,3 +48,5 @@ body { min-height: 100%; height: 100%; }
 
 #Code     { display: flex; align-items: stretch; gap: var(--gap); padding: var(--gap); }
 #Code > * { flex-grow: 1; }
+
+textarea { padding: var(--gap); }
