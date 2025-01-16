@@ -431,8 +431,8 @@ const patternsFilenamesAtom = atom([
   'signal',
   'skulls',
   'slanted-stars',
-  'squares-in-squares',
   'squares',
+  'squares-in-squares',
   'stamp-collection',
   'steel-beams',
   'stripes',
@@ -451,22 +451,19 @@ const patternsFilenamesAtom = atom([
 const patternsObjectAtom = atom( async (get) => {
   const filenames = get(patternsFilenamesAtom);
   let arrayObject = [];
+
   filenames.forEach( async (filename) => {
     let file             = await fetch( 'svg/' + filename + '.svg' );
     let svgString        = await file.text();
     let svgStringEncoded = svgStringToEncodedUrlString(svgString);
-    // console.log(     'filename:', filename         );
-    // console.log( 'svg-original:', svgString        );
-    // console.log(  'svg-encoded:', svgStringEncoded );
-    // console.log('---------------------------------');
     let p = {
-      name: filename,
-    //   svg: svgString,
-       url: svgStringEncoded
+        name: filename,
+        url: svgStringEncoded, // bereits als encodedUrlString so wie es auch im PATTERNS gemacht wurde
+        //svg: svgString // kompletter SVG string, nur das wird dann zukünftig genutzt
     };
     arrayObject.push(p);
   });
-  //console.log( 'arrayObject', arrayObject );
+  console.log( 'dieses objectarray funzt nicht (NEU)', arrayObject );
   return arrayObject;
 });
 
@@ -487,9 +484,9 @@ function svgStringToEncoded( str ){
     // ----------------------------------------
     // Use single quotes instead of double to avoid encoding.
     if( externalQuotesValue === 'double' ){
-      data = data.replace( /"/g, `'` );
+      data = data.replace( /"/g, "'" );
     } else {
-      data = data.replace( /'/g, `"` );
+      data = data.replace( /'/g, '"' );
     }
 
     data = data.replace(/>\s{1,}</g, '><');
@@ -501,26 +498,25 @@ function svgStringToEncoded( str ){
     data = data.replace(symbols, encodeURIComponent);
 
     // Return
-    // ----------------------------------------
     return data;
   }
 
   return '';
 
 }
-function svgStringToEncodedCSS( str, quotes = "'" ){
-  let svg = svgStringToEncoded(str);
-  return `background-image: url(${quotes}data:image/svg+xml,${svg}${quotes});`;
-}
 function svgStringToEncodedUrlString( str, quotes = "'" ){
   let svg = svgStringToEncoded(str);
   return `data:image/svg+xml,${svg}`;
 }
+function svgStringToEncodedCSS( str, quotes = "'" ){
+  let svg = svgStringToEncodedUrlString(str);
+  return `background-image: url(${quotes}${svg}${quotes});`;
+}
 
-const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' );
-const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' );
-const fgOpacityAtom     = atomWithStorage( 'fg-opacity', '1' );
-const patternNameAtom   = atomWithStorage( 'pattern-name', '' );
+const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' ); // Current backgroundColor
+const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' ); // Current foregroundColor
+const fgOpacityAtom     = atomWithStorage( 'fg-opacity', '1'     ); // Current foregroundOpacity
+const patternNameAtom   = atomWithStorage( 'pattern-name', ''    ); // Current pattern
 const patternCodeAtom   = atom( get => {
   const bgColor   = get(bgColorAtom);
   const fgColor   = get(fgColorAtom);
@@ -537,7 +533,7 @@ const patternCodeAtom   = atom( get => {
 });
 const patternObjectAtom = atom( get =>
   PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
-);
+); // Current patternObject
 const patternStyleAtom  = atom( get => {
   const bgColor   = get(bgColorAtom);
   const fgColor   = get(fgColorAtom);
@@ -555,7 +551,7 @@ const patternStyleAtom  = atom( get => {
     backgroundColor: bgColor,
     backgroundImage: bgImage,
   };
-});
+}); // will be deleted/replaced
 
 function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
@@ -574,7 +570,7 @@ function buildPatternStyle( patternObject, returnType = 'object' ){
     return `background-color: ${bgColor}; background-image: url("${url}");`;
   }
 
-}
+}  // will be deleted/replaced
 
 /////////////// REACT ///////////////
 
@@ -631,12 +627,21 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
+  console.log( 'dieses objectarray funzt (ALT)', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS.map( pattern => {
               return <Pattern key={pattern.name} obj={pattern} />
             })}
           </div>)
 }
+// function Patterns(){ // das funktioniert nicht / objekt wird aus den svg-files gebaut, siehe zeilen 362 und 451
+//   const patterns = useAtomValue(patternsObjectAtom);
+//   return (<div id='Patterns' data-viewmode='grid'>
+//             {patterns.map( pattern => {
+//               return <Pattern key={pattern.name} obj={pattern} />
+//             })}
+//           </div>)
+// }
 function Preview(){
   const style = useAtomValue( patternStyleAtom );
   if( style ){
