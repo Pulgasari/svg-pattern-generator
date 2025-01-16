@@ -153,7 +153,7 @@ const patternsObjectAtom = atom( async (get) => {
     };
     arrayObject.push(p);
   });
-  console.log( 'arrayObject', arrayObject );
+  //console.log( 'arrayObject', arrayObject );
   return arrayObject;
 });
 
