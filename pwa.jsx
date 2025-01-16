@@ -184,7 +184,9 @@ function Patterns(){
 function Preview(){
   const style = useAtomValue( patternStyleAtom );
   if( style ){
-    return <div id='Preview' style={style}></div>
+    return (<div id='Preview' style={style}>
+              <Code/>
+            </div>)
   } else {
     return <div id='Preview'>No Pattern was selected.</div>
   }
@@ -192,7 +194,7 @@ function Preview(){
 
 /////////////// RENDER REACT ///////////////
 
-var r = <><Options/><Patterns/><Preview/><Code/></>;
+var r = <><Options/><Patterns/><Preview/></>;
 ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
 
