@@ -318,14 +318,36 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
+  console.log( 'PATTERNS in <Patterns>', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
+function Pattern2({ obj }){
+  const setPatternName =   useSetAtom( patternNameAtom       );
+  const bgColor        = useAtomValue( bgColorAtom   );
+  const fgColor        = useAtomValue( fgColorAtom   );
+  const fgOpacity      = useAtomValue( fgOpacityAtom );
+
+  let url = obj.url
+          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
+          . replace( '$FGOPACITY', fgOpacity );
+  let bgImage = 'url("' + url + '")';
+  //console.log(bgImage);
+
+  return (<div
+            className='Pattern'
+            onClick={event => setPatternName(obj.name)}
+            style={{
+              backgroundColor: bgColor,
+              backgroundImage: bgImage,
+            }}
+          ></div>);
+}
 function Patterns2(){
   let patterns = useAtomValue(patternsObjectAtom);
   console.log( 'patterns in <Patterns2>', patterns );
-  return (<div id='Patterns' data-viewmode='grid'>
+  return (<div id='Patterns2' data-viewmode='grid'>
             {patterns.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
