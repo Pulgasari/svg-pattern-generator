@@ -591,17 +591,29 @@ function Options(){
   const [ fgOpacity, setFgOpacity ] = useAtom( fgOpacityAtom );
 
   return (<div id='Options'>
+            <h2>Options</h2>
             <div>
-              <label>Background-Color</label>
-              <input type='color' value={bgColor} onChange={ event => setBgColor(event.target.value) } />
+              <h3>Colors</h3>
+              <div>
+                <label>Background-Color</label>
+                <input type='color' value={bgColor} onChange={ event => setBgColor(event.target.value) } />
+              </div>
+              <div>
+                <label>Foreground-Color</label>
+                <input type='color' value={fgColor} onChange={ event => setFgColor(event.target.value) } />
+              </div>
+              <div>
+                <label>Foreground-Opacity</label>
+                <input type='range' value={fgOpacity} min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
+              </div>
             </div>
             <div>
-              <label>Foreground-Color</label>
-              <input type='color' value={fgColor} onChange={ event => setFgColor(event.target.value) } />
+              <h3>Advanced Background</h3>
+              <p>coming soon ...</p>
             </div>
             <div>
-              <label>Foreground-Opacity</label>
-              <input type='range' value={fgOpacity} min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
+              <h3>Animations</h3>
+              <p>coming soon ...</p>
             </div>
           </div>)
 }

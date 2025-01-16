@@ -63,7 +63,7 @@ textarea  { padding: var(--gap); }
   #Preview  { order: 3; flex-basis:   50%; flex-grow: 0; }
 
   #Patterns { --gap: 10px; padding: var(--gap) 0; }
-  #Preview  { justify-content: flex-end; }
+  #Preview  { justify-content: flex-end; align-items: center; }
   #Code     { width: 80%; }
 }
 
