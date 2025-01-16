@@ -463,7 +463,7 @@ const patternsObjectAtom = atom( async (get) => {
     };
     arrayObject.push(p);
   });
-  console.log( 'dieses objectarray funzt nicht (NEU)', arrayObject );
+
   return arrayObject;
 });
 
@@ -627,6 +627,8 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
+  const newPatternsObj = useAtomValue(patternsObjectAtom);
+  console.log( 'dieses objectarray funzt nicht (NEU)', newPatternsObj );
   console.log( 'dieses objectarray funzt (ALT)', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS.map( pattern => {
