@@ -30,6 +30,7 @@ body { min-height: 100%; height: 100%; }
 #App      { display: flex; flex-direction: column; align-items: center; justify-content: center; }
 #Options  { order: 1; flex-basis: 100px; flex-grow: 0; width: 100%; }
 #Patterns { order: 2; flex-basis: 100px; flex-grow: 0; width: 100%; }
+#Patterns2 { order: 2; flex-basis: 100px; flex-grow: 0; width: 100%; }
 #Preview  { order: 3; flex-basis: 100px; flex-grow: 1; width: 100%; }
 #Code     { order: 4; flex-basis: 100px; flex-grow: 0; width: 100%; }
 
