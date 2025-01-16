@@ -60,7 +60,7 @@ function Options(){
             </div>
             <div>
               <label>Foreground-Opacity</label>
-              <input type='range' min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } / />
+              <input type='range' min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
             </div>
           </div>)
 }
