@@ -24,14 +24,14 @@ const patterns = [
   }
 ];
 
-function Pattern({ name, url, source }){
+function Pattern({ obj }){
   return (<div 
             className='.Pattern'
             style={{
               height: '100px',
               width: '100px',
               backgroundColor: '#DFDBE5',
-              backgroundImage: `url("${url}")`
+              backgroundImage: `url(${obj.url})`
             }}
           ></div>);
 }
@@ -43,7 +43,7 @@ function Options(){
 }
 function Patterns(){
   return (<div id='Patterns'>
-            {patterns.map( pattern => <Pattern data={pattern} /> )}
+            {patterns.map( pattern => <Pattern obj={pattern} /> )}
           </div>)
 }
 function Preview(){
