@@ -126,9 +126,13 @@ const patternStyleAtom  = atom( get => {
 function Code(){
   const code = useAtomValue( patternCodeAtom );
   
+  if( code ){
   return (<div id='Code'>
             <textarea>{code}</textarea>
           </div>)
+  } else {
+    return <div id='Code'>No pattern was selected.</div>
+  }
 }
 function Options(){
   const [   bgColor,   setBgColor ] = useAtom( bgColorAtom   );
