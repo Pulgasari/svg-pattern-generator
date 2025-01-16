@@ -83,7 +83,7 @@ const PATTERNS = [
 /////////////// Atoms (Global States) ///////////////
 
 const patternsFilenamesAtom = atom([
-  '4-point-stars'
+  '4-point-stars',
   'anchors-away',
   'architect',
   'autumn',
@@ -363,11 +363,9 @@ function Preview(){
 var r = <><Options/><Patterns/><Preview/></>;
 ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
-
 /////////////// ... ///////////////
 
 //========= Register Service Worker =========
-
 window.onload = () => {
   'use strict';
   if( 'serviceWorker' in navigator ){
