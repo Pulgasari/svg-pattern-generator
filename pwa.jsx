@@ -44,10 +44,24 @@ function Pattern({ obj }){
             }}
           ></div>);
 }
-
 function Options(){
+  const [   bgColor,   setBgColor ] = useAtom( backgroundColorAtom   );
+  const [   fgColor,   setFgColor ] = useAtom( foregroundColorAtom   );
+  const [ fgOpacity, setFgOpacity ] = useAtom( foregroundOpacityAtom );
+  
   return (<div id='Options'>
-            Options
+            <div>
+              <label>Background-Color</label>
+              <input type='color' onChange={ event => setBgColor(event.target.value) } />
+            </div>
+            <div>
+              <label>Foreground-Color</label>
+              <input type='color' onChange={ event => setFgColor(event.target.value) } />
+            </div>
+            <div>
+              <label>Foreground-Opacity</label>
+              <input type='range' min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } / />
+            </div>
           </div>)
 }
 function Patterns(){
@@ -65,9 +79,9 @@ function Preview(){
     <div 
       id='Preview'
       style={{
-              backgroundColor: '#DFDBE5',
-              backgroundImage: `url(${obj.url})`
-            }}
+        backgroundColor: '#DFDBE5',
+        backgroundImage: `url(${obj.url})`
+      }}
    ></div>
   } else {
     <div id='Preview'>No Pattern was selected.</div>
