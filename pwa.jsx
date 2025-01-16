@@ -609,17 +609,17 @@ function Options(){
             </div>
           </div>)
 }
+
 function Pattern({ obj }){
-  const setPatternName =   useSetAtom( patternNameAtom       );
-  const bgColor        = useAtomValue( bgColorAtom   );
-  const fgColor        = useAtomValue( fgColorAtom   );
-  const fgOpacity      = useAtomValue( fgOpacityAtom );
+  const setPatternName =   useSetAtom( patternNameAtom );
+  const bgColor        = useAtomValue( bgColorAtom     );
+  const fgColor        = useAtomValue( fgColorAtom     );
+  const fgOpacity      = useAtomValue( fgOpacityAtom   );
 
   let url = obj.url
-          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
-          . replace( '$FGOPACITY', fgOpacity );
+          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
+          . replace('#','%23')
   let bgImage = 'url("' + url + '")';
-  //console.log(bgImage);
 
   return (<div
             className='Pattern'
@@ -631,42 +631,8 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
-  console.log( 'PATTERNS in <Patterns>', PATTERNS );
-  console.log( 'PATTERNS2 in <Patterns>', PATTERNS2 );
   return (<div id='Patterns' data-viewmode='grid'>
-            {PATTERNS2.map( pattern => <Pattern key={pattern.name} obj={pattern} /> )}
-          </div>)
-}
-function Pattern2({ obj }){
-  const setPatternName =   useSetAtom( patternNameAtom );
-  const bgColor        = useAtomValue( bgColorAtom     );
-  const fgColor        = useAtomValue( fgColorAtom     );
-  const fgOpacity      = useAtomValue( fgOpacityAtom   );
-
-  console.log( '<Pattern2> triggered');
-
-  let url = obj.url
-          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
-          . replace('#','%23')
-  let bgImage = 'url("' + url + '")';
-  //console.log(bgImage);
-
-  return (<div
-            className='Pattern'
-            onClick={event => setPatternName(obj.name)}
-            style={{
-              backgroundColor: bgColor,
-              backgroundImage: bgImage,
-            }}
-          ></div>);
-}
-function Patterns2(){
-  //let newPatterns = useAtomValue(patternsObjectAtom);
-  //console.log( 'newPatterns in <Patterns2>', newPatterns );
-  return (<div id='Patterns2' data-viewmode='grid'>
-            {PATTERNS2.map( pattern => {
-              // console.log( '<Pattern2> triggered in <Patterns2>');
-              // console.log( '--- its obj property:', pattern );
+            {PATTERNS.map( pattern => {
               return <Pattern2 key={pattern.name} obj={pattern} />
             })}
           </div>)
@@ -681,20 +647,10 @@ function Preview(){
     return <div id='Preview'>No Pattern was selected.</div>
   }
 }
-function Preview2(){
-  const style = useAtomValue( patternStyleAtom2 );
-  if( style ){
-    return (<div id='Preview' style={style}>
-              <Code/>
-            </div>)
-  } else {
-    return <div id='Preview'>No Pattern was selected.</div>
-  }
-}
 
 /////////////// RENDER REACT ///////////////
 
-var r = <><Options/><Patterns2/><Preview2/></>;
+var r = <><Options/><Patterns/><Preview/></>;
 ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 
 /////////////// ... ///////////////
