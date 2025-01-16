@@ -487,52 +487,6 @@ const patternsObjectAtom = atom( async (get) => {
   return arrayObject;
 });
 
-function svgStringToEncoded( str ){
-
-  if(str){
-
-    let data = str;
-    let externalQuotesValue = 'double'; // 'single'
-
-    // Namespace
-    // ----------------------------------------
-    if( data.indexOf(`http://www.w3.org/2000/svg`) < 0 ){
-      data = data.replace(/<svg/g, `<svg xmlns=${quotes.level2}http://www.w3.org/2000/svg${quotes.level2}`);
-    }
-
-    // Encoding
-    // ----------------------------------------
-    // Use single quotes instead of double to avoid encoding.
-    if( externalQuotesValue === 'double' ){
-      data = data.replace( /"/g, "'" );
-    } else {
-      data = data.replace( /'/g, '"' );
-    }
-
-    data = data.replace(/>\s{1,}</g, '><');
-    data = data.replace(/\s{2,}/g, ' ');
-
-    // Using encodeURIComponent() as replacement function
-    // allows to keep result code readable
-    const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
-    data = data.replace(symbols, encodeURIComponent);
-
-    // Return
-    return data;
-  }
-
-  return '';
-
-}
-function svgStringToEncodedUrlString( str, quotes = "'" ){
-  let svg = svgStringToEncoded(str);
-  return `data:image/svg+xml,${svg}`;
-}
-function svgStringToEncodedCSS( str, quotes = "'" ){
-  let svg = svgStringToEncodedUrlString(str);
-  return `background-image: url(${quotes}${svg}${quotes});`;
-}
-
 const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' ); // Current backgroundColor
 const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' ); // Current foregroundColor
 const fgOpacityAtom     = atomWithStorage( 'fg-opacity', '1'     ); // Current foregroundOpacity
@@ -642,6 +596,52 @@ function patternObjectToSvgStringForPreview( patternObject ){
 
   // Return new String
 
+}
+// SVG ENCODING
+function svgStringToEncoded( str ){
+
+  if(str){
+
+    let data = str;
+    let externalQuotesValue = 'double'; // 'single'
+
+    // Namespace
+    // ----------------------------------------
+    if( data.indexOf(`http://www.w3.org/2000/svg`) < 0 ){
+      data = data.replace(/<svg/g, `<svg xmlns=${quotes.level2}http://www.w3.org/2000/svg${quotes.level2}`);
+    }
+
+    // Encoding
+    // ----------------------------------------
+    // Use single quotes instead of double to avoid encoding.
+    if( externalQuotesValue === 'double' ){
+      data = data.replace( /"/g, "'" );
+    } else {
+      data = data.replace( /'/g, '"' );
+    }
+
+    data = data.replace(/>\s{1,}</g, '><');
+    data = data.replace(/\s{2,}/g, ' ');
+
+    // Using encodeURIComponent() as replacement function
+    // allows to keep result code readable
+    const symbols = /[\r\n%#()<>?[\\\]^`{|}]/g;
+    data = data.replace(symbols, encodeURIComponent);
+
+    // Return
+    return data;
+  }
+
+  return '';
+
+}
+function svgStringToEncodedUrlString( str, quotes = "'" ){
+  let svg = svgStringToEncoded(str);
+  return `data:image/svg+xml,${svg}`;
+}
+function svgStringToEncodedCSS( str, quotes = "'" ){
+  let svg = svgStringToEncodedUrlString(str);
+  return `background-image: url(${quotes}${svg}${quotes});`;
 }
 
 /////////////// REACT ///////////////
