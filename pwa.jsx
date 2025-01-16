@@ -128,7 +128,7 @@ function Code(){
   
   if( code ){
   return (<div id='Code'>
-            <textarea>{code}</textarea>
+            <textarea value={code} />
           </div>)
   } else {
     return <div id='Code'>No pattern was selected.</div>
