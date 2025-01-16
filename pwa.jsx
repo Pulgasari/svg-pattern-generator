@@ -121,6 +121,25 @@ const patternStyleAtom  = atom( get => {
   };
 });
 
+function buildPatternStyle( patternObject, returnType = 'object' ){
+  const bgColor   = useAtomValue( bgColorAtom   );
+  const fgColor   = useAtomValue( fgColorAtom   );
+  const fgOpacity = useAtomValue( fgOpacityAtom );
+  
+  let url = patternObject.url
+          . replace(   '$FGCOLOR', fgColor.replace('#','%23') )
+          . replace( '$FGOPACITY', fgOpacity );
+  let bgImage = 'url("' + url + '")';
+  
+  if( returnType === 'object' ){
+    return { backgroundColor: bgColor, backgroundImage: bgImage }
+  } 
+  else if( returnType === 'string' ){
+    return `background-color: ${bgColor}; background-image: url("${url}");`;
+  }
+  
+}
+
 /////////////// REACT ///////////////
 
 function Code(){
