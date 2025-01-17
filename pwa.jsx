@@ -398,6 +398,21 @@ const PATTERNS_SOURCE = [
    "width": "42",
      "svg": "<svg><path fill='#000000' fill-rule='evenodd' d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/></svg>",
   },{
+    "name": "charlie-brown",
+  "height": "12",
+   "width": "20",
+     "svg": "<svg viewBox='0 0 20 12'><path fill='#000000' d='M9.8 12L0 2.2V.8l10 10 10-10v1.4L10.2 12h-.4zm-4 0L0 6.2V4.8L7.2 12H5.8zm8.4 0L20 6.2V4.8L12.8 12h1.4zM9.8 0l.2.2.2-.2h-.4zm-4 0L10 4.2 14.2 0h-1.4L10 2.8 7.2 0H5.8z'/></svg>",
+  },{
+    "name": "cork-screw",
+  "height": "16",
+   "width": "20",
+     "svg": "<svg viewBox='0 0 20 16'><path fill='#000000' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/></svg>",
+  },{
+    "name": "diagonal-stripes",
+  "height": "40",
+   "width": "40",
+     "svg": "<svg viewBox='0 0 40 40'><g fill='#000000'><polygon points='0 40 40 0 20 0 0 20'></polygon><polygon points='40 40 40 20 20 40'></polygon></g></svg>",
+  },{
     "name": "plus",
   "height": "60",
    "width": "60",
