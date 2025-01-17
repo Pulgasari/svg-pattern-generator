@@ -741,12 +741,12 @@ function Preview(){
   const style = useAtomValue( patternStyleAtom );
 
   // Neu
+  console.log('--- NEW PREVIEW -----------------------');
   let          fgColor = useAtomValue( fgColorAtom     ); console.log(     'fgColor:',     fgColor );
   let        fgOpacity = useAtomValue( fgOpacityAtom   ); console.log(   'fgOpacity:',   fgOpacity );
   let      patternName = useAtomValue( patternNameAtom ); console.log( 'patternName:', patternName );
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName )
   let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
-  console.log('--- NEW PREVIEW ---------');
   console.log(patternObject);
   console.log(patternSvgString);
 
