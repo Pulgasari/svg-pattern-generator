@@ -811,6 +811,7 @@ function Pattern({ obj }){
   const bgColor   = useAtomValue(   bgColorAtom );
   const fgColor   = useAtomValue(   fgColorAtom );
   const fgOpacity = useAtomValue( fgOpacityAtom );
+  const  setWidth =   useSetAtom(     widthAtom );
 
   // NEU
   let patternSvgString = getPatternSvgString( obj, { fgColor, fgOpacity } );
