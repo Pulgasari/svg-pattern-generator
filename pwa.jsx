@@ -687,11 +687,12 @@ const     fgOpacityAtom = atomWithStorage(   'fg-opacity',       '1' ); // Curre
 const         widthAtom = atomWithStorage(        'width',        '' ); // Current pattern
 const   patternNameAtom = atomWithStorage( 'pattern-name',        '' ); // Current pattern
 const   patternCodeAtom = atom( get => {
-  const bgColor   = get(bgColorAtom);
-  const fgColor   = get(fgColorAtom);
+  const   bgColor = get(bgColorAtom);
+  const   fgColor = get(fgColorAtom);
   const fgOpacity = get(fgOpacityAtom);
-  const pattern   = get(patternObjectAtom);
-  let patternSvgString = getPatternSvgString( pattern, { fgColor, fgOpacity } );
+  const     width = get(widthAtom);
+  const   pattern = get(patternObjectAtom);
+  let patternSvgString = getPatternSvgString( pattern, { fgColor, fgOpacity, width } );
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
 
   if( Object.keys(pattern).length === 0 ){ return ''; }
@@ -739,8 +740,8 @@ function getPatternSvgString( patternObject, attributesObject={} ){
   let svgElement = dom.querySelector('svg');
   svgElement.setAttribute(   'xmlns', 'http://www.w3.org/2000/svg' );
   svgElement.setAttribute( 'viewbox', `0 0 ${width2} ${height2}`   );
-  svgElement.setAttribute(  'height', height );
-  svgElement.setAttribute(   'width',  width );
+  svgElement.setAttribute(  'height', height2 );
+  svgElement.setAttribute(   'width',  width2 );
 
   // Convert SVG-DomObject to (new) SVG-String
   let srlz = new XMLSerializer();
