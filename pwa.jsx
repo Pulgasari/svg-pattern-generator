@@ -1,4 +1,4 @@
-import React from "https://esm.sh/react@19/?dev"
+import React, { useEffect } from "https://esm.sh/react@19/?dev"
 import ReactDOMClient from "https://esm.sh/react-dom@19/client?dev"
 import { atom, useAtom, useAtomValue, useSetAtom } from "https://esm.sh/jotai?dev"
 import { atomWithQuery } from "https://esm.sh/jotai-tanstack-query?dev"
@@ -361,7 +361,7 @@ const PATTERNS_SOURCE = [
       "name": "4-point-stars",
     "height": "24",
      "width": "24",
-       "svg": "<svg><polygon fill='#000000' fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/></svg>",
+       "svg": "<svg fill='#000000'><polygon points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/></svg>",
   },{
       "name": "anchors-away",
     "height": "80",
