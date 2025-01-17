@@ -954,6 +954,7 @@ function Preview(){
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName ) || {};
   let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity, width } );
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
+  let bgSize = width + 'px';
   console.log(patternObject);
   console.log(patternSvgString);
   console.log( 'bgImage:', bgImage );
@@ -964,7 +965,7 @@ function Preview(){
               style={{
                 backgroundColor: bgColor,
                 backgroundImage: bgImage,
-                 backgroundSize: width
+                 backgroundSize: bgSize
               }}
             ><Code/></div>
   } else {
