@@ -747,6 +747,8 @@ function Preview(){
   let currentPatternName = useAtomValue( patternNameAtom );
   let      patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
   let   patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
+  console.log('--- NEW PREVIEW ---------');
+  console.log(patternObject);
   console.log(patternSvgString);
 
   if( style ){
