@@ -397,6 +397,32 @@ const PATTERNS_SOURCE = [
   "height": "44",
    "width": "42",
      "svg": "<svg><path fill='#000000' fill-rule='evenodd' d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/></svg>",
+  },{
+    "name": "plus",
+  "height": "60",
+   "width": "60",
+     "svg": "<svg><path fill='#000000' d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/></svg>",
+  },{
+    "name": "polka-dots",
+  "height": "20",
+   "width": "20",
+     "svg": "<svg viewBox='0 0 20 20'><g fill='#000000'><circle id='Oval-377-Copy-9' cx='3' cy='3' r='3'></circle><circle cx='13' cy='13' r='3'></circle></g></svg>",
+  },
+  {
+    "name": "rails",
+  "height": "10",
+   "width": "20",
+     "svg": "<svg><path fill='#000000' d='M16,6 L6,6 L6,10 L4,10 L4,6 L2,6 L2,4 L4,4 L4,0 L6,0 L6,4 L16,4 L16,0 L18,0 L18,4 L20,4 L20,6 L18,6 L18,10 L16,10 L16,6 Z'></path></svg>",
+  },{
+    "name": "random-shapes",
+  "height": "80",
+   "width": "80",
+     "svg": "<svg><path fill='#000000' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/></svg>",
+  },{
+    "name": "squares",
+  "height": "32",
+   "width": "32",
+     "svg": "<svg><path fill='#000000' fill-rule='nonzero' d='M6 18h12V6H6v12zM4 4h16v16H4V4z'/></svg>",
   },
   // {
   //   "name": "",
