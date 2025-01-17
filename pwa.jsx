@@ -506,7 +506,7 @@ const   patternCodeAtom = atom( get => {
   let patternSvgString = getPatternSvgString( pattern, { fgColor, fgOpacity } );
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
 
-  if( !pattern ){ return ''; }
+  if( Object.keys(pattern).length === 0 ){ return ''; }
 
   let url = pattern.url
           . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
@@ -517,24 +517,6 @@ const   patternCodeAtom = atom( get => {
 const patternObjectAtom = atom( get =>
   PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || {}
 ); // Current patternObject
-const patternStyleAtom  = atom( get => {
-  const bgColor   = get(bgColorAtom);
-  const fgColor   = get(fgColorAtom);
-  const fgOpacity = get(fgOpacityAtom);
-  const pattern   = get(patternObjectAtom);
-
-  if( !pattern ){ return {}; }
-
-  let url = pattern.url
-          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
-          . replace('#','%23');
-  let bgImage = 'url("' + url + '")';
-
-  return {
-    backgroundColor: bgColor,
-    backgroundImage: bgImage,
-  };
-}); // will be deleted/replaced
 function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
   const fgColor   = useAtomValue( fgColorAtom   );
@@ -752,8 +734,6 @@ function Patterns(){
 //           </div>)
 // }
 function Preview(){
-  const style = useAtomValue( patternStyleAtom );
-
   // Neu
   console.log('--- NEW PREVIEW -----------------------');
   let            width = useAtomValue(       widthAtom ); console.log(       'width:',       width );
@@ -768,7 +748,7 @@ function Preview(){
   console.log(patternSvgString);
   console.log( 'bgImage:', bgImage );
 
-  if( style ){
+  if( patternName ){
     return <div
               id='Preview'
               style={{
