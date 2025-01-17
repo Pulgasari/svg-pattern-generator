@@ -560,7 +560,7 @@ function getPatternSvgString( patternObject, attributesObject={} ){
 
   let svgString = patternObject.svg          || '<svg></svg>';
   let    height = patternObject.height       || '100';
-  let     width = patternObject.width        || '100'
+  let     width = patternObject.width        || '100';
   let   fgColor = attributesObject.fgColor   || '#000000';
   let fgOpacity = attributesObject.fgOpacity || '1';
   let    width2 = attributesObject.width     || width;
@@ -582,9 +582,6 @@ function getPatternSvgString( patternObject, attributesObject={} ){
   // Convert SVG-DomObject to (new) SVG-String
   let srlz = new XMLSerializer();
   let  str = srlz.serializeToString(dom);
-
-  // Encode (new) SVG-String
-
 
   // Return (new) SVG-String
   return str;
