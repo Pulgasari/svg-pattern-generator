@@ -745,16 +745,25 @@ function Preview(){
 
   // Neu
   console.log('--- NEW PREVIEW -----------------------');
+  let          bgColor = useAtomValue(     bgColorAtom ); console.log(     'bgColor:',     bgColor );
   let          fgColor = useAtomValue(     fgColorAtom ); console.log(     'fgColor:',     fgColor );
   let        fgOpacity = useAtomValue(   fgOpacityAtom ); console.log(   'fgOpacity:',   fgOpacity );
   let      patternName = useAtomValue( patternNameAtom ); console.log( 'patternName:', patternName );
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName ) || {};
   let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
+  let bgImage = `url("` + svgStringToEncodedUrlString(patternSvgString) + `")`;
   console.log(patternObject);
   console.log(patternSvgString);
+  console.log( 'bgImage:', bgImage );
 
   if( style ){
-    return <div id='Preview' style={style}><Code/></div>
+    return <div
+              id='Preview'
+              style={{
+                backgroundColor: bgColor,
+                backgroundImage: bgImage
+              }}
+            ><Code/></div>
   } else {
     return <div id='Preview'>No Pattern was selected.</div>
   }
