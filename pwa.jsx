@@ -743,7 +743,7 @@ function Preview(){
 
   // Neu
   let            fgColor = useAtomValue( fgColorAtom     );
-  let          fgOpacity = useAtomValue( fgOpacity       );
+  let          fgOpacity = useAtomValue( fgOpacityAtom   );
   let currentPatternName = useAtomValue( patternNameAtom );
   let      patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
   let   patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
