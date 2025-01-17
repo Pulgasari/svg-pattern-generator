@@ -742,10 +742,12 @@ function Preview(){
   const style = useAtomValue( patternStyleAtom );
 
   // Neu
-  // let currentPatternName = useAtomValue( patternNameAtom );
-  // let      patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
-  // let   patternSvgString = getPatternSvgString(patternObject);
-  // console.log(patternSvgString);
+  let            fgColor = useAtomValue( fgColorAtom     );
+  let          fgOpacity = useAtomValue( fgOpacity       );
+  let currentPatternName = useAtomValue( patternNameAtom );
+  let      patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
+  let   patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
+  console.log(patternSvgString);
 
   if( style ){
     return (<div id='Preview' style={style}>
