@@ -515,7 +515,7 @@ const   patternCodeAtom = atom( get => {
   return `background-color: ${bgColor}; background-image: ${bgImage};`;
 });
 const patternObjectAtom = atom( get =>
-  PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || null
+  PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || {}
 ); // Current patternObject
 const patternStyleAtom  = atom( get => {
   const bgColor   = get(bgColorAtom);
