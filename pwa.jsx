@@ -558,9 +558,9 @@ function setAttributesOnSvgDomObject( svgObject, attributes={} ){
 }
 function getPatternSvgString( patternObject, attributesObject={} ){
 
-  let svgString = patternObject.svg;
-  let    height = patternObject.height;
-  let     width = patternObject.width;
+  let svgString = patternObject.svg          || '<svg></svg>';
+  let    height = patternObject.height       || '100';
+  let     width = patternObject.width        || '100'
   let   fgColor = attributesObject.fgColor   || '#000000';
   let fgOpacity = attributesObject.fgOpacity || '1';
   let    width2 = attributesObject.width     || width;
@@ -741,19 +741,17 @@ function Preview(){
   const style = useAtomValue( patternStyleAtom );
 
   // Neu
-  let            fgColor = useAtomValue( fgColorAtom     );
-  let          fgOpacity = useAtomValue( fgOpacityAtom   );
-  let currentPatternName = useAtomValue( patternNameAtom );
-  let      patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
-  let   patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
+  let          fgColor = useAtomValue( fgColorAtom     );
+  let        fgOpacity = useAtomValue( fgOpacityAtom   );
+  let      patternName = useAtomValue( patternNameAtom );
+  let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName )
+  let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
   console.log('--- NEW PREVIEW ---------');
   console.log(patternObject);
   console.log(patternSvgString);
 
   if( style ){
-    return (<div id='Preview' style={style}>
-              <Code/>
-            </div>)
+    return <div id='Preview' style={style}><Code/></div>
   } else {
     return <div id='Preview'>No Pattern was selected.</div>
   }
