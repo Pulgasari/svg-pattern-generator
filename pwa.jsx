@@ -789,9 +789,10 @@ const   patternCodeAtom = atom( get => {
   const   pattern = get(patternObjectAtom);
   let patternSvgString = getPatternSvgString( pattern, { fgColor, fgOpacity, width } );
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
+  let           bgSize = widthAtom + 'px';
 
   if( Object.keys(pattern).length === 0 ){ return ''; }
-  return `background-color: ${bgColor}; background-image: ${bgImage};`;
+  return `background-color: ${bgColor}; background-image: ${bgImage}; background-size: ${bgSize};`;
 });
 const  patternWidthAtom = atom( get => get(patternObjectAtom).width || 80 );
 const patternObjectAtom = atom( get => PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || {} ); // Current patternObject
