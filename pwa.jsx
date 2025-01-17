@@ -714,18 +714,20 @@ function Options(){
 }
 
 function Pattern({ obj }){
-  const setPatternName =   useSetAtom( patternNameAtom );
-  const bgColor        = useAtomValue( bgColorAtom     );
-  const fgColor        = useAtomValue( fgColorAtom     );
-  const fgOpacity      = useAtomValue( fgOpacityAtom   );
+  const [ patternName, setPatternName ] = useAtom( patternNameAtom );
+  const bgColor   = useAtomValue(   bgColorAtom );
+  const fgColor   = useAtomValue(   fgColorAtom );
+  const fgOpacity = useAtomValue( fgOpacityAtom );
 
   let url = obj.url
           . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
           . replace('#','%23')
   let bgImage = 'url("' + url + '")';
 
+  let className = ( obj.name === patternName ) ? 'Pattern selected' : 'Pattern';
+
   return (<div
-            className='Pattern'
+            className={className}
             title={obj.name}
             onClick={event => setPatternName(obj.name)}
             style={{
