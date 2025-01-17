@@ -774,10 +774,10 @@ function getPatternSvgString( patternObject, attributesObject={} ){
   // Add attributes: xmlns + viewbox + height + width
   let svgElement = dom.querySelector('svg');
   svgElement.setAttribute(   'xmlns', 'http://www.w3.org/2000/svg' );
-  svgElement.setAttribute( 'viewbox', `0 0 ${width2} ${height2}`   );
+  svgElement.setAttribute( 'viewbox', `0 0 ${width} ${height}`   );
   svgElement.setAttribute(   'width',  width2 );
-  svgElement.setAttribute(  'height', height2 );
-  svgElement.setAttribute( 'preserveAspectRatio', 'xMidYMid' );
+  svgElement.setAttribute(  'height', 'auto' );
+  // svgElement.setAttribute( 'preserveAspectRatio', 'xMidYMid' );
 
   // Convert SVG-DomObject to (new) SVG-String
   let srlz = new XMLSerializer();
