@@ -699,7 +699,7 @@ function Options(){
               <h3>Width</h3>
               <div>
                 <label>Width</label>
-                <input type='range' value={fgOpacity} min='1' max='200' step='1' onInput={ event => setWidth(event.target.value) } />
+                <input type='range' value={width} min='1' max='200' step='1' onInput={ event => setWidth(event.target.value) } />
               </div>
             </div>
             <div>
