@@ -503,6 +503,8 @@ const   patternCodeAtom = atom( get => {
   const fgColor   = get(fgColorAtom);
   const fgOpacity = get(fgOpacityAtom);
   const pattern   = get(patternObjectAtom);
+  let patternSvgString = getPatternSvgString( pattern, { fgColor, fgOpacity } );
+  let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
 
   if( !pattern ){ return ''; }
 
@@ -510,10 +512,10 @@ const   patternCodeAtom = atom( get => {
           . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
           . replace('#','%23');
 
-  return `background-color: ${bgColor}; background-image: url("${url}");`;
+  return `background-color: ${bgColor}; background-image: ${bgImage};`;
 });
 const patternObjectAtom = atom( get =>
-  PATTERNS.find( pattern => pattern.name === get(patternNameAtom) ) || null
+  PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || null
 ); // Current patternObject
 const patternStyleAtom  = atom( get => {
   const bgColor   = get(bgColorAtom);
