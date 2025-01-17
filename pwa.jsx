@@ -765,11 +765,8 @@ ReactDOMClient.createRoot( document.getElementById('App') ).render(r);
 /////////////// ... ///////////////
 
 //========= Register Service Worker =========
-window.onload = () => {
-  'use strict';
-  if( 'serviceWorker' in navigator ){
-    navigator.serviceWorker.register('sw.js');
-  }
+window.onload = () => { 'use strict';
+  if( 'serviceWorker' in navigator ){ navigator.serviceWorker.register('sw.js'); }
 }
 
 
