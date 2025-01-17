@@ -483,10 +483,30 @@ const PATTERNS_SOURCE = [
    "width": "80",
      "svg": "<svg><path fill='#000000' d='M11 0l5 20H6l5-20zm42 31a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM0 72h40v4H0v-4zm0-8h31v4H0v-4zm20-16h20v4H20v-4zM0 56h40v4H0v-4zm63-25a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM53 41a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-30 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-28-8a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zM56 5a5 5 0 0 0-10 0h10zm10 0a5 5 0 0 1-10 0h10zm-3 46a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm10 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM21 0l5 20H16l5-20zm43 64v-4h-4v4h-4v4h4v4h4v-4h4v-4h-4zM36 13h4v4h-4v-4zm4 4h4v4h-4v-4zm-4 4h4v4h-4v-4zm8-8h4v4h-4v-4z'/></svg>",
   },{
+    "name": "slanted-stars",
+  "height": "30",
+   "width": "30",
+     "svg": "<svg><path fill='#000000' d='M0,15 L15,30 L0,30 L0,15 L0,15 Z M15,0 L30,15 L30,0 L15,0 L15,0 Z' /></svg>",
+  },{
     "name": "squares",
   "height": "32",
    "width": "32",
      "svg": "<svg><path fill='#000000' fill-rule='nonzero' d='M6 18h12V6H6v12zM4 4h16v16H4V4z'/></svg>",
+  },{
+    "name": "stripes",
+  "height": "1",
+   "width": "40",
+     "svg": "<svg><rect fill='#000000' x='0' y='0' width='20' height='1'></rect></svg>",
+  },{
+    "name": "texture",
+  "height": "4",
+   "width": "4",
+     "svg": "<svg><path fill='#000000' d='M1 3h1v1H1V3zm2-2h1v1H3V1z' /></svg>",
+  },{
+    "name": "tiny-checkers",
+  "height": "8",
+   "width": "8",
+     "svg": "<svg><path fill='#000000' d='M0 0h4v4H0V0zm4 4h4v4H4V4z' /></svg>",
   },{
     "name": "volcano-lamp",
   "height": "32",
