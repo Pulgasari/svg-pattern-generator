@@ -408,10 +408,20 @@ const PATTERNS_SOURCE = [
    "width": "20",
      "svg": "<svg viewBox='0 0 20 16'><path fill='#000000' d='M0 .04C2.6.22 4.99 1.1 7 2.5A13.94 13.94 0 0 1 15 0h4c.34 0 .67.01 1 .04v2A12 12 0 0 0 7.17 12h5.12A7 7 0 0 1 20 7.07V14a5 5 0 0 0-3-4.58A5 5 0 0 0 14 14H0V7.07c.86.12 1.67.4 2.4.81.75-1.52 1.76-2.9 2.98-4.05C3.79 2.83 1.96 2.2 0 2.04v-2z'/></svg>",
   },{
+    "name": "diagonal-lines",
+  "height": "6",
+   "width": "6",
+     "svg": "<svg viewBox='0 0 6 6'><g fill='#000000'><polygon id='Rectangle-9' points='5 0 6 0 0 6 0 5'></polygon><polygon id='Rectangle-9-Copy' points='6 5 6 6 5 6'></polygon></g></svg>",
+  },{
     "name": "diagonal-stripes",
   "height": "40",
    "width": "40",
      "svg": "<svg viewBox='0 0 40 40'><g fill='#000000'><polygon points='0 40 40 0 20 0 0 20'></polygon><polygon points='40 40 40 20 20 40'></polygon></g></svg>",
+  },{
+    "name": "dominos",
+  "height": "84",
+   "width": "126",
+     "svg": "<svg viewBox='0 0 126 84'><path fill='#000000' d='M126 83v1H0v-2h40V42H0v-2h40V0h2v40h40V0h2v40h40V0h2v83zm-2-1V42H84v40h40zM82 42H42v40h40V42zm-50-6a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm96 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm-42 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm30-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM20 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 24a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM8 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM50 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm54-12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm12 12a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 54a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24 0a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM92 78a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm24-42a4 4 0 1 1 0-8 4 4 0 0 1 0 8z'/></svg>",
   },{
     "name": "plus",
   "height": "60",
