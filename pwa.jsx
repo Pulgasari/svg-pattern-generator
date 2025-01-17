@@ -617,9 +617,8 @@ const   patternCodeAtom = atom( get => {
   if( Object.keys(pattern).length === 0 ){ return ''; }
   return `background-color: ${bgColor}; background-image: ${bgImage};`;
 });
-const patternObjectAtom = atom( get =>
-  PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || {}
-); // Current patternObject
+const  patternWidthAtom = atom( get => get(patternObjectAtom).width || 80 );
+const patternObjectAtom = atom( get => PATTERNS_SOURCE.find( pattern => pattern.name === get(patternNameAtom) ) || {} ); // Current patternObject
 function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
   const fgColor   = useAtomValue( fgColorAtom   );
@@ -783,10 +782,16 @@ function Pattern({ obj }){
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
   let        className = ( obj.name === patternName ) ? 'Pattern selected' : 'Pattern';
 
+  //
+  let handleClick = () => {
+    setWidth(obj.width);
+    setPatternName(obj.name);
+  }
+
   return (<div
             className={className}
             title={obj.name}
-            onClick={event => setPatternName(obj.name)}
+            onClick={() => handleClick()}
             style={{
               backgroundColor: bgColor,
               backgroundImage: bgImage,
@@ -809,7 +814,7 @@ function Preview(){
   let        fgOpacity = useAtomValue(   fgOpacityAtom ); console.log(   'fgOpacity:',   fgOpacity );
   let      patternName = useAtomValue( patternNameAtom ); console.log( 'patternName:', patternName );
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName ) || {};
-  let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
+  let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity, width } );
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
   console.log(patternObject);
   console.log(patternSvgString);
