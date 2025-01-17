@@ -549,31 +549,43 @@ function buildPatternStyle( patternObject, returnType = 'object' ){
 // SVG MANIPULATION
 function setAttributesOnSvgDomObject( svgObject, attributes={} ){
 
+    // aus der andern funktion (hier nur zwischengelagert)
+    // dom = setAttributesOnSvgDomObject( dom, {
+    //     xlmns: 'http://www.w3.org/2000/svg',
+    //   viewbox: `0 0 ${width} ${height}`,
+    //    height: height,
+    //     width: width,
+    // });
 }
-function patternObjectToSvgStringForPatternPicker( patternObject ){
+function getPatternSvgString( patternObject, attributesObject={} ){
 
-  let    svg = patternObject.svg;
-  let height = patternObject.height;
-  let  width = patternObject.width;
+  let svgString = patternObject.svg;
+  let    height = patternObject.height;
+  let     width = patternObject.width;
+  let   fgColor = attributesObject.fgColor   || '#000000';
+  let fgOpacity = attributesObject.fgOpacity || '1';
+  let    width2 = attributesObject.width     || width;
+  let   height2 = width2 / ( width / height );
 
   // Set --fgColor and --fgOpacity in the (old) SVG-String
-  svg = svg.replace( "fill='#000000'", "fill='var(--fgColor)' fill-opacity='var(--fgOpacity)'" );
+  svgString = svgString.replace( "fill='#000000'", `fill='${fgColor}' fill-opacity='${fgOpacity}'` );
 
   // Convert (old) SVG-String to SVG-DomObject
-  let dom = new DOMParser().parseFromString( svg, 'text/html' );
+  let dom = new DOMParser().parseFromString( svgString, 'image/svg+xml' );
 
   // Add attributes: xmlns + viewbox + height + width
-  dom = setAttributesOnSvgDomObject( dom, {
-      xlmns: 'http://www.w3.org/2000/svg',
-    viewbox: `0 0 ${width} ${height}`,
-     height: height,
-      width: width,
-  });
+  let svgElement = dom.querySelector('svg');
+  svgElement.setAttribute(   'xmlns', 'http://www.w3.org/2000/svg' );
+  svgElement.setAttribute( 'viewbox', `0 0 ${width} ${height}`     );
+  svgElement.setAttribute(  'height', height2 );
+  svgElement.setAttribute(   'width', width2  );
 
   // Convert SVG-DomObject to (new) SVG-String
-  let str = '';
+  let srlz = new XMLSerializer();
+  let  str = srlz.serializeToString(dom);
 
   // Encode (new) SVG-String
+
 
   // Return (new) SVG-String
   return str;
@@ -712,9 +724,6 @@ function Pattern({ obj }){
           ></div>);
 }
 function Patterns(){
-  const newPatternsObj = useAtomValue(patternsObjectAtom);
-  console.log( 'dieses objectarray funzt nicht (NEU)', newPatternsObj );
-  console.log( 'dieses objectarray funzt (ALT)', PATTERNS );
   return (<div id='Patterns' data-viewmode='grid'>
             {PATTERNS.map( pattern => {
               return <Pattern key={pattern.name} obj={pattern} />
@@ -731,6 +740,13 @@ function Patterns(){
 // }
 function Preview(){
   const style = useAtomValue( patternStyleAtom );
+
+  // Neu
+  let currentPatternName = useAtomValue( patternNameAtom );
+  let patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === currentPatternName )
+  let patternSvgString = getPatternSvgString(patternObject);
+  console.log(patternSvgString);
+
   if( style ){
     return (<div id='Preview' style={style}>
               <Code/>
