@@ -719,12 +719,10 @@ function Pattern({ obj }){
   const fgColor   = useAtomValue(   fgColorAtom );
   const fgOpacity = useAtomValue( fgOpacityAtom );
 
-  let url = obj.url
-          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
-          . replace('#','%23')
-  let bgImage = 'url("' + url + '")';
-
-  let className = ( obj.name === patternName ) ? 'Pattern selected' : 'Pattern';
+  // NEU
+  let patternSvgString = getPatternSvgString( obj, { fgColor, fgOpacity } );
+  let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
+  let        className = ( obj.name === patternName ) ? 'Pattern selected' : 'Pattern';
 
   return (<div
             className={className}
