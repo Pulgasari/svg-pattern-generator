@@ -644,9 +644,9 @@ function Code(){
   const code = useAtomValue( patternCodeAtom );
 
   if( code ){
-  return (<div id='Code'>
-            <textarea value={code} onInput={ event => {event.target.style.height = ''; event.target.style.height = event.target.scrollHeight + 'px' }} />
-          </div>)
+    return (<div id='Code'>
+              <textarea value={code} onInput={ event => {event.target.style.height = ''; event.target.style.height = event.target.scrollHeight + 'px' }} />
+            </div>)
   } else {
     return <div id='Code'>No pattern was selected.</div>
   }
