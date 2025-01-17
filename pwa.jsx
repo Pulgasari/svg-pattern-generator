@@ -481,7 +481,7 @@ const patternsObjectAtom = atom( async (get) => {
   filenames.forEach( async (filename) => {
     let file             = await fetch( 'svg/' + filename + '.svg' );
     let svgString        = await file.text();
-    let svgStringEncoded = svgStringToEncodedUrlString(svgString);
+    let svgStringEncoded = encodeToUrlString(svgString);
     let p = {
         name: filename,
         url: svgStringEncoded, // bereits als encodedUrlString so wie es auch im PATTERNS gemacht wurde
@@ -649,12 +649,12 @@ function svgStringToEncoded( str ){
   return '';
 
 }
-function svgStringToEncodedUrlString( str, quotes = "'" ){
+function encodeToUrlString( str, quotes = "'" ){
   let svg = svgStringToEncoded(str);
   return `data:image/svg+xml,${svg}`;
 }
 function svgStringToEncodedCSS( str, quotes = "'" ){
-  let svg = svgStringToEncodedUrlString(str);
+  let svg = encodeToUrlString(str);
   return `background-image: url(${quotes}${svg}${quotes});`;
 }
 
@@ -751,7 +751,7 @@ function Preview(){
   let      patternName = useAtomValue( patternNameAtom ); console.log( 'patternName:', patternName );
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName ) || {};
   let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
-  let bgImage = `url("` + svgStringToEncodedUrlString(patternSvgString) + `")`;
+  let bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
   console.log(patternObject);
   console.log(patternSvgString);
   console.log( 'bgImage:', bgImage );
