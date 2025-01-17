@@ -73,3 +73,27 @@ textarea  { padding: var(--gap); }
 #App > *:nth-child(1) { z-index: 3; background: var(--C1); }
 #App > *:nth-child(2) { z-index: 2; background: color-mix( in oklab, var(--C1)  90%, white ); }
 #App > *:nth-child(3) { z-index: 1; background: color-mix( in oklab, var(--C1)  80%, white ); }
+
+@keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+       -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+         -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.Pattern.selected {
+  -webkit-animation: rotating 10s linear infinite;
+     -moz-animation: rotating 10s linear infinite;
+      -ms-animation: rotating 10s linear infinite;
+       -o-animation: rotating 10s linear infinite;
+          animation: rotating 10s linear infinite;
+}
