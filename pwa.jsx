@@ -361,7 +361,7 @@ const PATTERNS_SOURCE = [
       "name": "4-point-stars",
     "height": "24",
      "width": "24",
-       "svg": "<svg fill='#000000'><polygon points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/></svg>",
+       "svg": "<svg><polygon fill='#000000' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/></svg>",
   },{
       "name": "anchors-away",
     "height": "80",
