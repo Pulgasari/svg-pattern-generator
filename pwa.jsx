@@ -526,7 +526,6 @@ const patternStyleAtom  = atom( get => {
     backgroundImage: bgImage,
   };
 }); // will be deleted/replaced
-
 function buildPatternStyle( patternObject, returnType = 'object' ){
   const bgColor   = useAtomValue( bgColorAtom   );
   const fgColor   = useAtomValue( fgColorAtom   );
