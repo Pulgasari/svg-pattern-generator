@@ -493,11 +493,12 @@ const patternsObjectAtom = atom( async (get) => {
   return arrayObject;
 });
 
-const bgColorAtom       = atomWithStorage( 'bg-color', '#DFDBE5' ); // Current backgroundColor
-const fgColorAtom       = atomWithStorage( 'fg-color', '#9C92AC' ); // Current foregroundColor
-const fgOpacityAtom     = atomWithStorage( 'fg-opacity', '1'     ); // Current foregroundOpacity
-const patternNameAtom   = atomWithStorage( 'pattern-name', ''    ); // Current pattern
-const patternCodeAtom   = atom( get => {
+const       bgColorAtom = atomWithStorage(     'bg-color', '#DFDBE5' ); // Current backgroundColor
+const       fgColorAtom = atomWithStorage(     'fg-color', '#9C92AC' ); // Current foregroundColor
+const     fgOpacityAtom = atomWithStorage(   'fg-opacity',       '1' ); // Current foregroundOpacity
+const         widthAtom = atomWithStorage(        'width',        '' ); // Current pattern
+const   patternNameAtom = atomWithStorage( 'pattern-name',        '' ); // Current pattern
+const   patternCodeAtom = atom( get => {
   const bgColor   = get(bgColorAtom);
   const fgColor   = get(fgColorAtom);
   const fgOpacity = get(fgOpacityAtom);
@@ -672,9 +673,10 @@ function Code(){
   }
 }
 function Options(){
-  const [   bgColor,   setBgColor ] = useAtom( bgColorAtom   );
-  const [   fgColor,   setFgColor ] = useAtom( fgColorAtom   );
+  const [   bgColor,   setBgColor ] = useAtom(   bgColorAtom );
+  const [   fgColor,   setFgColor ] = useAtom(   fgColorAtom );
   const [ fgOpacity, setFgOpacity ] = useAtom( fgOpacityAtom );
+  const [     width,     setWidth ] = useAtom(     widthAtom );
 
   return (<div id='Options'>
             <h2>Options</h2>
@@ -691,6 +693,13 @@ function Options(){
               <div>
                 <label>Foreground-Opacity</label>
                 <input type='range' value={fgOpacity} min='0' max='1' step='0.01' onInput={ event => setFgOpacity(event.target.value) } />
+              </div>
+            </div>
+            <div>
+              <h3>Width</h3>
+              <div>
+                <label>Width</label>
+                <input type='range' value={fgOpacity} min='1' max='200' step='1' onInput={ event => setWidth(event.target.value) } />
               </div>
             </div>
             <div>
