@@ -754,13 +754,14 @@ function Preview(){
 
   // Neu
   console.log('--- NEW PREVIEW -----------------------');
+  let            width = useAtomValue(       widthAtom ); console.log(       'width:',       width );
   let          bgColor = useAtomValue(     bgColorAtom ); console.log(     'bgColor:',     bgColor );
   let          fgColor = useAtomValue(     fgColorAtom ); console.log(     'fgColor:',     fgColor );
   let        fgOpacity = useAtomValue(   fgOpacityAtom ); console.log(   'fgOpacity:',   fgOpacity );
   let      patternName = useAtomValue( patternNameAtom ); console.log( 'patternName:', patternName );
   let    patternObject = PATTERNS_SOURCE.find( pattern => pattern.name === patternName ) || {};
   let patternSvgString = getPatternSvgString( patternObject, { fgColor, fgOpacity } );
-  let bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
+  let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
   console.log(patternObject);
   console.log(patternSvgString);
   console.log( 'bgImage:', bgImage );
