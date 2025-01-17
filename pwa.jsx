@@ -507,11 +507,6 @@ const   patternCodeAtom = atom( get => {
   let          bgImage = `url("` + encodeToUrlString(patternSvgString) + `")`;
 
   if( Object.keys(pattern).length === 0 ){ return ''; }
-
-  let url = pattern.url
-          . replace(   `fill='%23000000'`, `fill='${fgColor}' fill-opacity='${fgOpacity}'` )
-          . replace('#','%23');
-
   return `background-color: ${bgColor}; background-image: ${bgImage};`;
 });
 const patternObjectAtom = atom( get =>
