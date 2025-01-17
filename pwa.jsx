@@ -403,12 +403,16 @@ const PATTERNS_SOURCE = [
    "width": "60",
      "svg": "<svg><path fill='#000000' d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/></svg>",
   },{
+    "name": "pixel-dots",
+  "height": "16",
+   "width": "16",
+     "svg": "<svg><path fill='#000000' d='M0,4.16333634e-16 L16,4.16333634e-16 L16,2 L10,2 L10,8 L16,8 L16,16 L8,16 L8,10 L2,10 L2,16 L0,16 L0,4.16333634e-16 Z M4,4 L6,4 L6,6 L4,6 L4,4 Z M12,12 L14,12 L14,14 L12,14 L12,12 Z M4,12 L6,12 L6,14 L4,14 L4,12 Z M12,4 L14,4 L14,6 L12,6 L12,4 Z'></path></svg>",
+  },{
     "name": "polka-dots",
   "height": "20",
    "width": "20",
-     "svg": "<svg viewBox='0 0 20 20'><g fill='#000000'><circle id='Oval-377-Copy-9' cx='3' cy='3' r='3'></circle><circle cx='13' cy='13' r='3'></circle></g></svg>",
-  },
-  {
+     "svg": "<svg><g fill='#000000'><circle id='Oval-377-Copy-9' cx='3' cy='3' r='3'></circle><circle cx='13' cy='13' r='3'></circle></g></svg>",
+  },{
     "name": "rails",
   "height": "10",
    "width": "20",
