@@ -736,7 +736,7 @@ function Pattern({ obj }){
 }
 function Patterns(){
   return (<div id='Patterns' data-viewmode='grid'>
-            {PATTERNS.map( pattern => {
+            {PATTERNS_SOURCE.map( pattern => {
               return <Pattern key={pattern.name} obj={pattern} />
             })}
           </div>)
