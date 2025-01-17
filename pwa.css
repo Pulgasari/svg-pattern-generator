@@ -37,7 +37,8 @@ body { min-height: 100%; height: 100%; }
 #Patterns[data-viewmode="grid-150"] { --minmax: 150px; }
 #Patterns[data-viewmode="grid-200"] { --minmax: 200px; }
 #Patterns[data-viewmode="grid-300"] { --minmax: 300px; }
-#Patterns > * { aspect-ratio: 1; cursor: pointer; }
+#Patterns .Pattern          { aspect-ratio: 1; cursor: pointer; }
+#Patterns .Pattern.selected { border-radius: 100%; }
 
 #App      { display: flex; }
 #Preview  { display: flex; flex-direction: column; }
