@@ -795,8 +795,8 @@ function getPatternSvgString( patternObject, attributesObject={} ){
   let svgElement = dom.querySelector('svg');
   svgElement.setAttribute(   'xmlns', 'http://www.w3.org/2000/svg' );
   svgElement.setAttribute( 'viewbox', `0 0 ${width} ${height}`   );
-  svgElement.setAttribute(   'width',  width2 );
-  svgElement.setAttribute(  'height', height2 );
+  svgElement.setAttribute(   'width',  width );
+  svgElement.setAttribute(  'height', height );
   // svgElement.setAttribute( 'preserveAspectRatio', 'xMidYMid' );
 
   // Convert SVG-DomObject to (new) SVG-String
@@ -963,7 +963,8 @@ function Preview(){
               id='Preview'
               style={{
                 backgroundColor: bgColor,
-                backgroundImage: bgImage
+                backgroundImage: bgImage,
+                 backgroundSize: width
               }}
             ><Code/></div>
   } else {
